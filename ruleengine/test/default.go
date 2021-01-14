@@ -7,7 +7,7 @@ import (
 	"github.com/curltech/go-colla-biz/ruleengine/goengine"
 	"github.com/curltech/go-colla-biz/ruleengine/service"
 	entity2 "github.com/curltech/go-colla-core/entity"
-	"github.com/kataras/golog"
+	"github.com/curltech/go-colla-core/logger"
 )
 
 const (
@@ -69,7 +69,7 @@ func (u *User) Say() {
 func exe(packageName string, version string, facts map[string]interface{}) {
 	err := goengine.Fire(packageName, version, facts)
 	if err != nil {
-		golog.Errorf("execute rule error: %v", err)
+		logger.Errorf("execute rule error: %v", err)
 	}
 }
 
@@ -100,7 +100,7 @@ func Test() {
 	facts["PrintReal"] = PrintReal
 	exe("test", "1.0.0", facts)
 
-	golog.Infof("user.Age=%d,Name=%s,Male=%t", user.Age, user.Name, user.Male)
+	logger.Infof("user.Age=%d,Name=%s,Male=%t", user.Age, user.Name, user.Male)
 }
 
 func Prepare() {

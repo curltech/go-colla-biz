@@ -8,9 +8,9 @@ import (
 	"github.com/curltech/go-colla-core/container"
 	"github.com/curltech/go-colla-core/crypto/std"
 	entity2 "github.com/curltech/go-colla-core/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/service"
 	"github.com/curltech/go-colla-core/util/message"
-	"github.com/kataras/golog"
 )
 
 var MemCache = cache.NewMemCache("rbac", 1, 10)
@@ -120,7 +120,7 @@ func (this *UserService) Auth(userName string, password string) (*entity.User, e
 	this.EncryptPassword(user)
 	ok := this.Get(user, false, "", "")
 	if !ok {
-		golog.Errorf("%v auth fail!", userName)
+		logger.Errorf("%v auth fail!", userName)
 
 		return nil, errors.New("AuthFail")
 	}
@@ -136,7 +136,7 @@ func (this *UserService) Login(userName string, password string) (*entity.User, 
 	}
 	key := this.getCacheKey(user.UserName)
 	MemCache.SetDefault(key, user)
-	golog.Infof("%v successfully login!", userName)
+	logger.Infof("%v successfully login!", userName)
 
 	return user, nil
 }

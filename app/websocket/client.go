@@ -5,7 +5,7 @@ package websocket
 */
 import (
 	"context"
-	"github.com/kataras/golog"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/kataras/iris/v12/websocket"
 	"net/url"
 	"sync"
@@ -44,7 +44,7 @@ func NewWsClient(schema string, ip string, port string, path string, timeout tim
 func (this *WsClient) dail() {
 	var err error
 	uri := url.URL{Scheme: this.schema, Host: *this.addr, Path: this.path}
-	golog.Infof("connecting to %s", uri.String())
+	logger.Infof("connecting to %s", uri.String())
 
 	ctx, cancel := context.WithDeadline(context.Background(), time.Now().Add(this.timeout))
 	defer cancel()
@@ -57,7 +57,7 @@ func (this *WsClient) dail() {
 	}
 	client, err := websocket.Dial(ctx, dialer, uri.String(), clientEvents)
 	if err != nil {
-		golog.Errorf("%v", err)
+		logger.Errorf("%v", err)
 
 		return
 	}
@@ -65,17 +65,17 @@ func (this *WsClient) dail() {
 
 	this.conn, err = client.Connect(ctx, "")
 	if err != nil {
-		golog.Errorf("%v", err)
+		logger.Errorf("%v", err)
 
 		return
 	}
 	this.isAlive = true
-	golog.Infof("connecting to %s 链接成功！！！", uri.String())
+	logger.Infof("connecting to %s 链接成功！！！", uri.String())
 }
 
 func (this *WsClient) Disconnect() {
 	if err := this.conn.Disconnect(nil); err != nil {
-		golog.Errorf("reply from server: %v", err)
+		logger.Errorf("reply from server: %v", err)
 	}
 }
 
@@ -88,7 +88,7 @@ func (this *WsClient) Send(msg websocket.Message) {
 处理接收的消息
 */
 func (this *WsClient) OnClientNativeMessage(nsConn *websocket.NSConn, msg websocket.Message) error {
-	golog.Infof("Server got: %s from [%s]", msg.Body, nsConn.Conn.ID())
+	logger.Infof("Server got: %s from [%s]", msg.Body, nsConn.Conn.ID())
 	nsConn.Conn.Write(msg)
 
 	return nil

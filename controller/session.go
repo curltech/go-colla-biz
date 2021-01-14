@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/curltech/go-colla-core/config"
 	"github.com/curltech/go-colla-core/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/service"
-	"github.com/kataras/golog"
 	"github.com/kataras/iris/v12/sessions"
 	"time"
 )
@@ -55,7 +55,7 @@ func init() {
 type XORMDatabase struct {
 	sessionService     *service.SessionService
 	sessionDataService *service.SessionDataService
-	logger             *golog.Logger
+	logger             *logger.Logger
 }
 
 var _ sessions.Database = (*XORMDatabase)(nil)
@@ -69,7 +69,7 @@ func NewDatabase() sessions.Database {
 
 // SetLogger sets the logger once before server ran.
 // By default the Iris one is injected.
-func (db *XORMDatabase) SetLogger(logger *golog.Logger) {
+func (db *XORMDatabase) SetLogger(logger *logger.Logger) {
 	db.logger = logger
 }
 
@@ -162,10 +162,10 @@ func (db *XORMDatabase) get(sid string, key string, outPtr interface{}) {
 	if data != nil {
 		err := sessions.DefaultTranscoder.Unmarshal(data.([]byte), outPtr)
 		if err != nil {
-			golog.Errorf("%v", err)
+			logger.Errorf("%v", err)
 		}
 	}
-	golog.Errorf("%v", "NotFound")
+	logger.Errorf("%v", "NotFound")
 }
 
 func (db *XORMDatabase) keys(sid string) []string {
@@ -223,7 +223,7 @@ func (db *XORMDatabase) Clear(sid string) error {
 	mds[0] = sessionData
 	affected := db.sessionDataService.Delete(mds, "")
 	if affected == 0 {
-		golog.Errorf("NoDeleted")
+		logger.Errorf("NoDeleted")
 	}
 
 	return nil

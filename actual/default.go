@@ -8,8 +8,8 @@ import (
 	specentity "github.com/curltech/go-colla-biz/spec/entity"
 	"github.com/curltech/go-colla-core/cache"
 	baseentity "github.com/curltech/go-colla-core/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/reflect"
-	"github.com/kataras/golog"
 	"sync"
 )
 
@@ -59,7 +59,7 @@ func (this *Role) PutRole(role *Role) error {
 		this.Roles[kind] = value
 		role.TopId = this.TopId
 	} else {
-		golog.Errorf("Role actualId:%v is correct", actualId)
+		logger.Errorf("Role actualId:%v is correct", actualId)
 
 		return errors.New("")
 	}
@@ -91,7 +91,7 @@ func (this *Role) PutFixedActual(fixedActual interface{}) error {
 		reflect.SetValue(fixedActual, "TopId", this.TopId)
 		this.FixedActual = fixedActual
 	} else {
-		golog.Errorf("fixedActual parentId:%v is correct", parentId)
+		logger.Errorf("fixedActual parentId:%v is correct", parentId)
 
 		return errors.New("")
 	}
@@ -110,13 +110,13 @@ func (this *Role) PutConnection(conn *entity.Connection) error {
 		}
 		conn, ok := this.Connections[actualId]
 		if ok {
-			golog.Errorf("Repeat Connection")
+			logger.Errorf("Repeat Connection")
 
 			return errors.New("Repeat Connection")
 		}
 		this.Connections[actualId] = conn
 	} else {
-		golog.Errorf("Connection actualId:%v is correct", actualId)
+		logger.Errorf("Connection actualId:%v is correct", actualId)
 
 		return errors.New("")
 	}
@@ -134,7 +134,7 @@ func (this *Role) PutActionResult(actionResult *entity.ActionResult) error {
 		}
 		_, ok := this.ActionResults[kind]
 		if ok {
-			golog.Errorf("kind:" + kind + ";Same ActionResultEO will be replaced!Please check it")
+			logger.Errorf("kind:" + kind + ";Same ActionResultEO will be replaced!Please check it")
 
 			return errors.New("Repeat ActionResult")
 		}
@@ -181,7 +181,7 @@ func (this *Role) PutProperty(property *entity.Property) (err error) {
 		if len(this.Properties) == property.SerialId {
 			this.Properties = append(this.Properties, property)
 		} else {
-			golog.Errorf("ErrorSerialId")
+			logger.Errorf("ErrorSerialId")
 			err = errors.New("ErrorSerialId")
 		}
 	}
@@ -242,7 +242,7 @@ func (this *Role) computeProperty(property *entity.Property, attributeSpec *spec
 			// 如果属性此位置的specId已经存在，而且不等于要设置的属性specId，出错
 			if specId > 0 {
 				if attributeSpecId != specId {
-					golog.Errorf("property's currentAttributeSpecId:%v,but attributeSpecId:%v", specId, attributeSpecId)
+					logger.Errorf("property's currentAttributeSpecId:%v,but attributeSpecId:%v", specId, attributeSpecId)
 					err = errors.New("ConflictSpecId")
 				}
 				attributeSpecId = specId
@@ -270,7 +270,7 @@ func (this *Role) computeProperty(property *entity.Property, attributeSpec *spec
 
 				_, ok := this.PropertyStates[kind]
 				if ok {
-					golog.Errorf("kind:%v repeat PropertyKind error!", kind)
+					logger.Errorf("kind:%v repeat PropertyKind error!", kind)
 				}
 				state := property.State
 				if state == "" {
@@ -281,7 +281,7 @@ func (this *Role) computeProperty(property *entity.Property, attributeSpec *spec
 				}
 				this.updateState(kind, state)
 			} else { // 定义的kind为空，出错
-				golog.Errorf("AttributeSpecId:%v has no kind!", attributeSpecId)
+				logger.Errorf("AttributeSpecId:%v has no kind!", attributeSpecId)
 				err = errors.New("NoKind")
 			}
 		}

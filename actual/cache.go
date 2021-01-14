@@ -2,7 +2,7 @@ package actual
 
 import (
 	"fmt"
-	"github.com/kataras/golog"
+	"github.com/curltech/go-colla-core/logger"
 )
 
 func getKey(schemaName string, id uint64) string {
@@ -25,7 +25,7 @@ func setCacheRole(role *Role) {
 	key := getKey(role.SchemaName, role.Id)
 	_, ok := MemCache.Get(key)
 	if ok {
-		golog.Errorf("MemCacheExist:%v", role.Id)
+		logger.Errorf("MemCacheExist:%v", role.Id)
 	}
 	MemCache.SetDefault(key, role)
 }

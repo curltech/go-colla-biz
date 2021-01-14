@@ -5,16 +5,16 @@ import (
 	"github.com/curltech/go-colla-biz/spec/entity"
 	"github.com/curltech/go-colla-biz/spec/service"
 	baseentity "github.com/curltech/go-colla-core/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/convert"
 	"github.com/curltech/go-colla-core/util/reflect"
 	"github.com/huandu/xstrings"
-	"github.com/kataras/golog"
 )
 
 func UploadExcel(filename string) error {
 	xlsx, err := excelize.OpenFile(filename)
 	if err != nil {
-		golog.Errorf("filename:%v can't open", filename)
+		logger.Errorf("filename:%v can't open", filename)
 		return err
 	}
 

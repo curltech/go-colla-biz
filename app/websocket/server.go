@@ -7,9 +7,9 @@ package websocket
 import (
 	"errors"
 	"github.com/curltech/go-colla-core/config"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/message"
 	gorillaws "github.com/gorilla/websocket"
-	"github.com/kataras/golog"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/websocket"
 	"github.com/kataras/neffos/gorilla"
@@ -40,11 +40,11 @@ func Set(app *iris.Application) {
 	path := config.ServerWebsocketParams.Path
 	upgrader.CheckOrigin = func(r *http.Request) bool {
 		if r.Method != "POST" && r.Method != "GET" {
-			golog.Errorf("method is not GET/POST")
+			logger.Errorf("method is not GET/POST")
 			return false
 		}
 		if r.URL.Path != path {
-			golog.Errorf("path error, must be /websocket")
+			logger.Errorf("path error, must be /websocket")
 			return false
 		}
 		return true
@@ -61,13 +61,13 @@ func Set(app *iris.Application) {
 		id := c.ID()
 		_, ok := ConnectionPool[id]
 		if ok {
-			golog.Errorf("connection: %v exist!", id)
+			logger.Errorf("connection: %v exist!", id)
 
 			return errors.New("Exist")
 		}
 		GetWebsocketConnPool().Connect(c)
 		ConnectionPool[id] = c
-		golog.Infof("[%s] Connected to server!", c.ID())
+		logger.Infof("[%s] Connected to server!", c.ID())
 		/*msg := websocket.Message{
 			Body:  []byte(id),
 			Event: "onNewConnect", // fire the "onNewConnect" client event.
@@ -78,7 +78,7 @@ func Set(app *iris.Application) {
 		//msgBody["message"] = id + "," + global.Global.MyselfPeer.PeerId + "," + global.Global.MyselfPeer.PublicKey
 		data, err := message.Marshal(msgBody)
 		if err != nil {
-			golog.Errorf("Marshal failure")
+			logger.Errorf("Marshal failure")
 		}
 		SendRaw(id, data)
 
@@ -89,13 +89,13 @@ func Set(app *iris.Application) {
 		id := c.ID()
 		_, ok := ConnectionPool[id]
 		if !ok {
-			golog.Errorf("connection: %v not exist!", id)
+			logger.Errorf("connection: %v not exist!", id)
 
 			return
 		}
 		GetWebsocketConnPool().Disconnect(id)
 		delete(ConnectionPool, id)
-		golog.Infof("[%s] Disconnected from server", id)
+		logger.Infof("[%s] Disconnected from server", id)
 		/*message := websocket.Message{
 			Body:  []byte(id),
 			Event: "onQuitConnect", // fire the "onQuitConnect" client event.
@@ -103,7 +103,7 @@ func Set(app *iris.Application) {
 		c.Server().Broadcast(c, message)*/
 	}
 	ws.OnUpgradeError = func(err error) {
-		golog.Errorf("Upgrade Error: %v", err)
+		logger.Errorf("Upgrade Error: %v", err)
 	}
 
 	// register the server on an endpoint.
@@ -115,7 +115,7 @@ func Set(app *iris.Application) {
 处理接收的消息
 */
 func OnNativeMessage(nsConn *websocket.NSConn, msg websocket.Message) error {
-	golog.Infof("Server got: %s from [%s]", msg.Body, nsConn.Conn.ID())
+	logger.Infof("Server got: %s from [%s]", msg.Body, nsConn.Conn.ID())
 	var msgBody = make(map[string]interface{}, 0)
 	err := message.Unmarshal(msg.Body, &msgBody)
 	if err != nil {
@@ -127,7 +127,7 @@ func OnNativeMessage(nsConn *websocket.NSConn, msg websocket.Message) error {
 		_, ok := ConnectionPool[id]
 		if !ok {
 			ConnectionPool[id] = nsConn.Conn
-			golog.Infof("heartbeat: %v reset connectionPool!", id)
+			logger.Infof("heartbeat: %v reset connectionPool!", id)
 		}
 	} else {
 		// HandleChainMessage(msg.Body,remoteAddr) or HandlePCChainMessage
@@ -149,7 +149,7 @@ func OnNativeMessage(nsConn *websocket.NSConn, msg websocket.Message) error {
 func SendRaw(id string, data []byte) {
 	conn, ok := ConnectionPool[id]
 	if !ok {
-		golog.Errorf("connection: %v not exist!", id)
+		logger.Errorf("connection: %v not exist!", id)
 
 		return
 	}

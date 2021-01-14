@@ -22,7 +22,7 @@ func Set(app *iris.Application) {
 
 	//handler, err := newrelic.New(newrelic.ConfigAppName("APP_SERVER_NAME"), newrelic.ConfigLicense("NEWRELIC_LICENSE_KEY"))
 	//if err != nil {
-	//	golog.Errorf("%v", err)
+	//	logger.Errorf("%v", err)
 	//}
 	//app.Use(handler)
 	//

@@ -2,9 +2,9 @@ package actual
 
 import (
 	"github.com/curltech/go-colla-biz/spec/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/convert"
 	"github.com/huandu/xstrings"
-	"github.com/kataras/golog"
 	"strings"
 )
 
@@ -210,7 +210,7 @@ func (this *PositionPath) splitPath(path string) {
 			pos := xstrings.Slice(n, begin+1, end)
 			o, err := convert.ToObject(pos, "int")
 			if err != nil {
-				golog.Errorf("NumberFormatException")
+				logger.Errorf("NumberFormatException")
 			}
 			position = o.(int)
 		} else if begin > -1 && end > begin {

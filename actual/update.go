@@ -7,9 +7,9 @@ import (
 	"github.com/curltech/go-colla-biz/spec"
 	specentity "github.com/curltech/go-colla-biz/spec/entity"
 	baseentity "github.com/curltech/go-colla-core/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/convert"
 	"github.com/curltech/go-colla-core/util/reflect"
-	"github.com/kataras/golog"
 	"strings"
 )
 
@@ -24,7 +24,7 @@ func (this *Role) CanbeAdd(specId uint64) int {
 	if count < max {
 		return max - count
 	} else {
-		golog.Errorf("Max:%v,count:%v cannot add Speckind:%v", max, count, kind)
+		logger.Errorf("Max:%v,count:%v cannot add Speckind:%v", max, count, kind)
 		return 0
 	}
 }
@@ -73,7 +73,7 @@ func (this *Role) UpdateProperty() error {
 			return nil
 		}
 		if gap < 0 {
-			golog.Errorf("OverAttributeSpec")
+			logger.Errorf("OverAttributeSpec")
 
 			return errors.New("OverAttributeSpec")
 		}

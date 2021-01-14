@@ -9,11 +9,11 @@ import (
 	"github.com/curltech/go-colla-core/config"
 	"github.com/curltech/go-colla-core/container"
 	"github.com/curltech/go-colla-core/crypto"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/debug"
 	"github.com/curltech/go-colla-core/util/message"
 	"github.com/curltech/go-colla-core/util/reflect"
 	"github.com/go-playground/validator/v10"
-	"github.com/kataras/golog"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/context"
 	"mime/multipart"
@@ -48,7 +48,7 @@ func HTMLController(ctx iris.Context) {
 func MainController(ctx iris.Context) {
 	serviceName := ctx.Params().Get("serviceName")
 	methodName := ctx.Params().Get("methodName")
-	golog.Infof("MainController call %v.%v", serviceName, methodName)
+	logger.Infof("MainController call %v.%v", serviceName, methodName)
 	args := make([]interface{}, 1)
 	args[0] = ctx
 	msg := fmt.Sprintf("call servicename:%v methodName:%v", serviceName, methodName)
@@ -129,7 +129,7 @@ func UploadController(ctx iris.Context) {
 
 		return
 	}
-	golog.Infof("UploadController call %v.%v", serviceName, methodName)
+	logger.Infof("UploadController call %v.%v", serviceName, methodName)
 
 	err := ctx.Request().ParseMultipartForm(postMaxSize)
 	if err != nil {
@@ -151,7 +151,7 @@ func UploadController(ctx iris.Context) {
 	var files = make([]multipart.File, 0)
 	for _, heads := range form.File {
 		for _, head := range heads {
-			golog.Infof("file:%v", head.Filename)
+			logger.Infof("file:%v", head.Filename)
 			file, err := head.Open()
 			if err != nil {
 				ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
@@ -201,7 +201,7 @@ func DownloadController(ctx iris.Context) {
 	methodName := params["methodName"]
 	destName := params["destName"]
 
-	golog.Infof("DownloadController call %v.%v", serviceName, methodName)
+	logger.Infof("DownloadController call %v.%v", serviceName, methodName)
 	ctx.ContentType("")
 	ctx.ResponseWriter().Header().Set(context.ContentDispositionHeaderKey, "attachment;filename="+destName.(string))
 	args := make([]interface{}, 2)

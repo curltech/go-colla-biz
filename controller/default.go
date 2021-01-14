@@ -1,10 +1,10 @@
 package controller
 
 import (
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/service"
 	"github.com/curltech/go-colla-core/util/message"
 	"github.com/curltech/go-colla-core/util/reflect"
-	"github.com/kataras/golog"
 	"github.com/kataras/iris/v12"
 	"strings"
 )
@@ -45,14 +45,14 @@ func (this *BaseController) ReadJSON(ctx iris.Context) ([]interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	golog.Infof(string(json))
+	logger.Infof(string(json))
 	rowsSlicePtr := make([]interface{}, 0)
 	entities, err := this.ParseJSON(json)
 	if err != nil { //解析有错，按照单个实体解析
-		golog.Errorf("ReadJSON entities exception:%v", err)
+		logger.Errorf("ReadJSON entities exception:%v", err)
 		entity, err := this.BaseService.NewEntity(nil)
 		if err != nil {
-			golog.Errorf("NewEntity exception:%v", err)
+			logger.Errorf("NewEntity exception:%v", err)
 
 			return nil, err
 		}
@@ -60,7 +60,7 @@ func (this *BaseController) ReadJSON(ctx iris.Context) ([]interface{}, error) {
 			pageParam := &PageParam{CondiBean: entity}
 			err = message.Unmarshal(json, pageParam)
 			if err != nil { //都不能解析，出错
-				golog.Errorf("ReadJSON pageParam exception:%v", err)
+				logger.Errorf("ReadJSON pageParam exception:%v", err)
 			} else {
 				rowsSlicePtr = append(rowsSlicePtr, pageParam)
 			}
@@ -68,11 +68,11 @@ func (this *BaseController) ReadJSON(ctx iris.Context) ([]interface{}, error) {
 		if len(rowsSlicePtr) == 0 {
 			err = message.Unmarshal(json, entity)
 			if err != nil { //都不能解析，出错
-				golog.Errorf("ReadJSON entity exception:%v", err)
+				logger.Errorf("ReadJSON entity exception:%v", err)
 				condiBean := make(map[string]interface{})
 				err = message.Unmarshal(json, &condiBean)
 				if err != nil { //都不能解析，出错
-					golog.Errorf("ReadJSON condiBean exception:%v", err)
+					logger.Errorf("ReadJSON condiBean exception:%v", err)
 
 					return nil, err
 				} else {

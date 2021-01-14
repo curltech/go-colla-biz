@@ -7,8 +7,8 @@ import (
 	"github.com/curltech/go-colla-core/config"
 	"github.com/curltech/go-colla-core/container"
 	entity2 "github.com/curltech/go-colla-core/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/message"
-	"github.com/kataras/golog"
 	"github.com/kataras/iris/v12"
 	"time"
 )
@@ -64,10 +64,10 @@ func SessionController(ctx iris.Context) {
 		LastAccessTime: &now,
 	}
 	if session.IsNew() {
-		golog.Infof("new session:%v", sessionId)
+		logger.Infof("new session:%v", sessionId)
 		sessionInstance.Status = entity2.EntityState_New
 	} else {
-		golog.Infof("exist session access:%v", sessionId)
+		logger.Infof("exist session access:%v", sessionId)
 		sessionInstance.Status = entity2.EntityState_Modified
 	}
 	sessionInstanceService := service.GetSessionInstanceService()

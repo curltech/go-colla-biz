@@ -6,9 +6,9 @@ import (
 	"github.com/curltech/go-colla-core/cache"
 	"github.com/curltech/go-colla-core/container"
 	baseentity "github.com/curltech/go-colla-core/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/service"
 	"github.com/curltech/go-colla-core/util/message"
-	"github.com/kataras/golog"
 )
 
 /**
@@ -102,7 +102,7 @@ func loadGuiMenu() {
 		menus = append(menus, guiMenu)
 		MemCache.SetDefault(key, menus)
 	}
-	golog.Infof("GuiMenu load completed!")
+	logger.Infof("GuiMenu load completed!")
 }
 
 func Load() {

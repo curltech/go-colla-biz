@@ -1,7 +1,7 @@
 package websocket
 
 import (
-	"github.com/kataras/golog"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/kataras/iris/v12/websocket"
 )
 
@@ -17,7 +17,7 @@ func GetWebsocketConnPool() *WebsocketConnPool {
 
 func (this *WebsocketConnPool) Connect(conn *websocket.Conn) {
 	if conn != nil {
-		golog.Infof("remote peer:%v", conn.ID())
+		logger.Infof("remote peer:%v", conn.ID())
 		_, ok := this.pool[conn.ID()]
 		if !ok {
 			this.pool[conn.ID()] = conn

@@ -4,14 +4,14 @@ import (
 	"crypto/tls"
 	"github.com/curltech/go-colla-biz/app/router"
 	"github.com/curltech/go-colla-biz/app/websocket"
+	base "github.com/curltech/go-colla-biz/base/controller"
 	"github.com/curltech/go-colla-biz/controller"
 	controller2 "github.com/curltech/go-colla-biz/rbac/controller"
 	"github.com/curltech/go-colla-biz/view"
-	base "github.com/curltech/go-colla-core/base/controller"
 	"github.com/curltech/go-colla-core/config"
-	"github.com/kataras/golog"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/kataras/iris/v12"
-	"github.com/kataras/iris/v12/middleware/logger"
+	irislogger "github.com/kataras/iris/v12/middleware/logger"
 	"github.com/kataras/iris/v12/middleware/recover"
 )
 
@@ -21,11 +21,11 @@ func setLog() {
 	level, _ := config.GetString("log.level", "info")
 	app.Logger().SetLevel(level)
 
-	app.Use(logger.New())
+	app.Use(irislogger.New())
 
 	//f, _ := os.Create("iris.log")
 	//app.Logger().SetOutput(f)
-	//level := golog.Levels[golog.DebugLevel]
+	//level := logger.Levels[logger.DebugLevel]
 	//level.Name = "debug"         // default
 	//level.Title = "[DBUG]"       // default
 	//level.ColorCode = pio.Yellow // default
@@ -88,7 +88,7 @@ func start() {
 		port = config.TlsParams.Port
 	}
 
-	golog.Infof("successfully start iris app %v in port %v using %v tls mode,enjoy it!", appname, port, tlsmode)
+	logger.Infof("successfully start iris app %v in port %v using %v tls mode,enjoy it!", appname, port, tlsmode)
 
 	var irisAddr = ":" + port
 	if config.ServerParams.Addr != "" {

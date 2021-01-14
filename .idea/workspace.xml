@@ -2,8 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43c22fde-ae05-4ee5-afc1-4b016269e7c5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/logger/golog.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual/cache.go" beforeDir="false" afterPath="$PROJECT_DIR$/actual/cache.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/actual/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/actual/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual/path.go" beforeDir="false" afterPath="$PROJECT_DIR$/actual/path.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/actual/update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websocket/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/websocket/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websocket/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/websocket/connection.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/websocket/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/websocket/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/controller/sessionInstance.go" beforeDir="false" afterPath="$PROJECT_DIR$/base/controller/sessionInstance.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basecode/service/basecode.go" beforeDir="false" afterPath="$PROJECT_DIR$/basecode/service/basecode.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/session.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/session.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/service/menu.go" beforeDir="false" afterPath="$PROJECT_DIR$/gui/service/menu.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/controller/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/controller/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/service/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruleengine/test/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/ruleengine/test/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/spec/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/spec/upload.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,11 +56,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cache/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/p2p/dht" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/p2p/dht" />
+      <recent name="$PROJECT_DIR$/p2p/chain" />
+      <recent name="$PROJECT_DIR$/logger" />
       <recent name="$PROJECT_DIR$/cache/controller" />
       <recent name="$PROJECT_DIR$/base/controller" />
     </key>

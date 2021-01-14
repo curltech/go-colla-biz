@@ -6,9 +6,9 @@ import (
 	"github.com/curltech/go-colla-core/cache"
 	"github.com/curltech/go-colla-core/container"
 	baseentity "github.com/curltech/go-colla-core/entity"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/service"
 	"github.com/curltech/go-colla-core/util/message"
-	"github.com/kataras/golog"
 	"sync"
 )
 
@@ -142,7 +142,7 @@ func Load() {
 	}()
 	wg.Wait()
 
-	golog.Infof("BaseCode load completed!")
+	logger.Infof("BaseCode load completed!")
 }
 
 func init() {

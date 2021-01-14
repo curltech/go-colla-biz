@@ -6,7 +6,7 @@ import (
 	"github.com/curltech/go-colla-biz/rbac/entity"
 	"github.com/curltech/go-colla-biz/rbac/service"
 	"github.com/curltech/go-colla-core/config"
-	"github.com/kataras/golog"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/middleware/jwt"
 	"golang.org/x/crypto/ed25519"
@@ -105,7 +105,7 @@ func Protected(ctx iris.Context) {
 
 		return
 	}
-	golog.Infof("%v:%v:%v", userName, expiresAtString, timeLeft)
+	logger.Infof("%v:%v:%v", userName, expiresAtString, timeLeft)
 
 	//缓存中必须有token中用户名的会话
 	svc := service.GetUserService()
@@ -175,7 +175,7 @@ func VerifyToken(token []byte, currentUser *entity.User) (string, string, time.D
 	if err != nil {
 		return "", "", 0, err
 	}
-	golog.Infof("%v", verifiedToken)
+	logger.Infof("%v", verifiedToken)
 	claims := &UserClaims{}
 	err = verifiedToken.Claims(claims)
 	if err != nil {
@@ -189,7 +189,7 @@ func VerifyToken(token []byte, currentUser *entity.User) (string, string, time.D
 	standardClaims := verifiedToken.StandardClaims
 	expiresAtString := standardClaims.ExpiresAt().Format(time.RFC3339Nano)
 	timeLeft := standardClaims.Timeleft()
-	golog.Infof("%v:%v:%v", claims.UserName, expiresAtString, timeLeft)
+	logger.Infof("%v:%v:%v", claims.UserName, expiresAtString, timeLeft)
 
 	return claims.UserName, expiresAtString, timeLeft, nil
 }
@@ -203,7 +203,7 @@ func GenerateTokenPair(ctx iris.Context, user *entity.User) *jwt.TokenPair {
 	// The tokenPair looks like: {"access_token": $token, "refresh_token": $token}
 	tokenPair, err := CreateTokenPair(user)
 	if err != nil {
-		golog.Errorf("token pair: %v", err)
+		logger.Errorf("token pair: %v", err)
 		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 
 		return nil
@@ -252,7 +252,7 @@ func RefreshToken(ctx iris.Context, user *entity.User) *jwt.TokenPair {
 	// Verify the refresh token, which its subject MUST match the "currentUserID".
 	verifiedToken, err := verifier.VerifyToken(refreshToken, jwt.Expected{Subject: user.UserName})
 	if err != nil {
-		golog.Errorf("verify refresh token: %v", err)
+		logger.Errorf("verify refresh token: %v", err)
 		ctx.StopWithJSON(iris.StatusUnauthorized, err.Error())
 
 		return nil
