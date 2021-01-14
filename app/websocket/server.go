@@ -8,8 +8,6 @@ import (
 	"errors"
 	"github.com/curltech/go-colla-core/config"
 	"github.com/curltech/go-colla-core/util/message"
-	//"github.com/curltech/go-colla-node/libp2p/global"
-	//"github.com/curltech/go-colla-node/p2p/chain/handler/receiver"
 	gorillaws "github.com/gorilla/websocket"
 	"github.com/kataras/golog"
 	"github.com/kataras/iris/v12"
