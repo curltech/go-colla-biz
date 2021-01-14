@@ -8,8 +8,8 @@ import (
 	"errors"
 	"github.com/curltech/go-colla-core/config"
 	"github.com/curltech/go-colla-core/util/message"
-	"github.com/curltech/go-colla-node/libp2p/global"
-	"github.com/curltech/go-colla-node/p2p/chain/handler/receiver"
+	//"github.com/curltech/go-colla-node/libp2p/global"
+	//"github.com/curltech/go-colla-node/p2p/chain/handler/receiver"
 	gorillaws "github.com/gorilla/websocket"
 	"github.com/kataras/golog"
 	"github.com/kataras/iris/v12"
@@ -77,7 +77,7 @@ func Set(app *iris.Application) {
 		c.Server().Broadcast(c, msg)*/
 		var msgBody = make(map[string]interface{}, 0)
 		msgBody["contentType"] = "ConnectSessionId"
-		msgBody["message"] = id + "," + global.Global.MyselfPeer.PeerId + "," + global.Global.MyselfPeer.PublicKey
+		//msgBody["message"] = id + "," + global.Global.MyselfPeer.PeerId + "," + global.Global.MyselfPeer.PublicKey
 		data, err := message.Marshal(msgBody)
 		if err != nil {
 			golog.Errorf("Marshal failure")
@@ -133,16 +133,16 @@ func OnNativeMessage(nsConn *websocket.NSConn, msg websocket.Message) error {
 		}
 	} else {
 		// HandleChainMessage(msg.Body,remoteAddr) or HandlePCChainMessage
-		response, err := receiver.HandlePCChainMessage(msg.Body)
-		if err != nil {
-			return err
-		}
-		if response != nil {
-			/*message := websocket.Message{
-				Body: response,
-			}
-			nsConn.Conn.Write(message)*/
-		}
+		//response, err := receiver.HandlePCChainMessage(msg.Body)
+		//if err != nil {
+		//	return err
+		//}
+		//if response != nil {
+		//	/*message := websocket.Message{
+		//		Body: response,
+		//	}
+		//	nsConn.Conn.Write(message)*/
+		//}
 	}
 
 	return nil
