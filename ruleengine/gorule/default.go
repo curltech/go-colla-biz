@@ -70,7 +70,7 @@ func loadResources(packageName string, version string) []pkg.Resource {
 	ruleDefinition.Status = entity2.EntityStatus_Effective
 	ruleDefinition.PackageName = packageName
 	ruleDefinition.Version = version
-	svc.Find(&ruleDefinitions, &ruleDefinition, "", "")
+	svc.Find(&ruleDefinitions, &ruleDefinition, "", 0, 0, "")
 	var err error
 	resources := make([]pkg.Resource, 0)
 	for _, v := range ruleDefinitions {

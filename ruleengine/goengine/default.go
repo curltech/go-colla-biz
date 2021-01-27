@@ -9,7 +9,6 @@ import (
 	"github.com/curltech/go-colla-biz/ruleengine"
 	"github.com/curltech/go-colla-biz/ruleengine/entity"
 	"github.com/curltech/go-colla-biz/ruleengine/service"
-	"github.com/curltech/go-colla-core/cache"
 	"github.com/curltech/go-colla-core/content"
 	entity2 "github.com/curltech/go-colla-core/entity"
 )
@@ -42,7 +41,7 @@ func getKey(packageName string, version string) string {
 }
 
 func getCacheRule(packageName string, version string) (string, bool) {
-	v, ok := cache.MemCache.Get(getKey(packageName, version))
+	v, ok := ruleengine.MemCache.Get(getKey(packageName, version))
 	if ok {
 		return v.(string), true
 	}
@@ -51,7 +50,7 @@ func getCacheRule(packageName string, version string) (string, bool) {
 }
 
 func setCacheRule(packageName string, version string, rule string) {
-	cache.MemCache.SetDefault(getKey(packageName, version), rule)
+	ruleengine.MemCache.SetDefault(getKey(packageName, version), rule)
 }
 
 func load(packageName string, version string, dataCtx *context.DataContext) (*builder.RuleBuilder, error) {
@@ -65,7 +64,7 @@ func load(packageName string, version string, dataCtx *context.DataContext) (*bu
 		ruleDefinition.Status = entity2.EntityStatus_Effective
 		ruleDefinition.PackageName = packageName
 		ruleDefinition.Version = version
-		svc.Find(&ruleDefinitions, &ruleDefinition, "", "")
+		svc.Find(&ruleDefinitions, &ruleDefinition, "", 0, 0, "")
 		if len(ruleDefinitions) > 0 {
 			for _, ruleDefinition := range ruleDefinitions {
 				var drl = ruleDefinition.RawContent

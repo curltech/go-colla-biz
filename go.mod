@@ -18,10 +18,11 @@ require (
 	github.com/casbin/xorm-adapter v1.0.0 // indirect
 	github.com/cenkalti/backoff/v4 v4.0.2 // indirect
 	github.com/cloudwebrtc/go-protoo v0.0.0-20200926140535-79ecde67b906 // indirect
-	github.com/curltech/go-colla-core v0.0.1
+	github.com/curltech/go-colla-core v0.0.2
 	github.com/cznic/b v0.0.0-20181122101859-a26611c4d92d // indirect
 	github.com/cznic/mathutil v0.0.0-20181122101859-297441e03548 // indirect
 	github.com/cznic/strutil v0.0.0-20181122101858-275e90344537 // indirect
+	github.com/d5/tengo/v2 v2.6.2
 	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/elastic/go-elasticsearch/v8 v8.0.0-20200929065430-35fd8bce1107 // indirect
 	github.com/elazarl/goproxy v0.0.0-20201021153353-00ad82a08272 // indirect
