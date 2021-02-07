@@ -105,7 +105,7 @@ func Protected(ctx iris.Context) {
 
 		return
 	}
-	logger.Infof("%v:%v:%v", userName, expiresAtString, timeLeft)
+	logger.Sugar.Infof("%v:%v:%v", userName, expiresAtString, timeLeft)
 
 	//缓存中必须有token中用户名的会话
 	svc := service.GetUserService()
@@ -175,7 +175,7 @@ func VerifyToken(token []byte, currentUser *entity.User) (string, string, time.D
 	if err != nil {
 		return "", "", 0, err
 	}
-	logger.Infof("%v", verifiedToken)
+	logger.Sugar.Infof("%v", verifiedToken)
 	claims := &UserClaims{}
 	err = verifiedToken.Claims(claims)
 	if err != nil {
@@ -189,7 +189,7 @@ func VerifyToken(token []byte, currentUser *entity.User) (string, string, time.D
 	standardClaims := verifiedToken.StandardClaims
 	expiresAtString := standardClaims.ExpiresAt().Format(time.RFC3339Nano)
 	timeLeft := standardClaims.Timeleft()
-	logger.Infof("%v:%v:%v", claims.UserName, expiresAtString, timeLeft)
+	logger.Sugar.Infof("%v:%v:%v", claims.UserName, expiresAtString, timeLeft)
 
 	return claims.UserName, expiresAtString, timeLeft, nil
 }
@@ -203,7 +203,7 @@ func GenerateTokenPair(ctx iris.Context, user *entity.User) *jwt.TokenPair {
 	// The tokenPair looks like: {"access_token": $token, "refresh_token": $token}
 	tokenPair, err := CreateTokenPair(user)
 	if err != nil {
-		logger.Errorf("token pair: %v", err)
+		logger.Sugar.Errorf("token pair: %v", err)
 		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 
 		return nil
@@ -252,7 +252,7 @@ func RefreshToken(ctx iris.Context, user *entity.User) *jwt.TokenPair {
 	// Verify the refresh token, which its subject MUST match the "currentUserID".
 	verifiedToken, err := verifier.VerifyToken(refreshToken, jwt.Expected{Subject: user.UserName})
 	if err != nil {
-		logger.Errorf("verify refresh token: %v", err)
+		logger.Sugar.Errorf("verify refresh token: %v", err)
 		ctx.StopWithJSON(iris.StatusUnauthorized, err.Error())
 
 		return nil

@@ -102,7 +102,7 @@ func loadGuiMenu() {
 		menus = append(menus, guiMenu)
 		MemCache.SetDefault(key, menus)
 	}
-	logger.Infof("GuiMenu load completed!")
+	logger.Sugar.Infof("GuiMenu load completed!")
 }
 
 func Load() {

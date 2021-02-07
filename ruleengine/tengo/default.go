@@ -87,7 +87,7 @@ func load(packageName string, version string) ([]*tengo.Compiled, error) {
 		for _, script := range scripts {
 			compiled, err := script.Compile()
 			if err != nil {
-				logger.Errorf(err.Error())
+				logger.Sugar.Errorf(err.Error())
 				continue
 			}
 			script.SetImports(stdlib.GetModuleMap(stdlib.AllModuleNames()...))
@@ -115,7 +115,7 @@ func fire(compileds []*tengo.Compiled, facts map[string]interface{}) error {
 			er := compiled.Run()
 			if er != nil {
 				err = er
-				logger.Errorf(err.Error())
+				logger.Sugar.Errorf(err.Error())
 				continue
 			}
 			//compiled.GetAll()

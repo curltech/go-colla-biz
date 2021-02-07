@@ -120,7 +120,7 @@ func (this *UserService) Auth(userName string, password string) (*entity.User, e
 	this.EncryptPassword(user)
 	ok := this.Get(user, false, "", "")
 	if !ok {
-		logger.Errorf("%v auth fail!", userName)
+		logger.Sugar.Errorf("%v auth fail!", userName)
 
 		return nil, errors.New("AuthFail")
 	}
@@ -136,7 +136,7 @@ func (this *UserService) Login(userName string, password string) (*entity.User, 
 	}
 	key := this.getCacheKey(user.UserName)
 	MemCache.SetDefault(key, user)
-	logger.Infof("%v successfully login!", userName)
+	logger.Sugar.Infof("%v successfully login!", userName)
 
 	return user, nil
 }

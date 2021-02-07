@@ -11,7 +11,7 @@ func init() {
 	timeFormat := config.AppParams.TimeFormat
 	logger.SetTimeFormat(timeFormat)
 	// Levels contains a map of the log levels and their attributes.
-	errorAttrs := logger.Levels[logger.ErrorLevel]
+	errorAttrs := logger.Levels[logger.Sugar.ErrorLevel]
 
 	// Change a log level's text.
 	customColorCode := 156
@@ -20,5 +20,5 @@ func init() {
 	// Get (rich) text per log level.
 	enableColors := true
 	errorAttrs.Text(enableColors)
-	logger.Infof("log config completed!")
+	logger.Sugar.Infof("log config completed!")
 }

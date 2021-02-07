@@ -48,7 +48,7 @@ func HTMLController(ctx iris.Context) {
 func MainController(ctx iris.Context) {
 	serviceName := ctx.Params().Get("serviceName")
 	methodName := ctx.Params().Get("methodName")
-	logger.Infof("MainController call %v.%v", serviceName, methodName)
+	logger.Sugar.Infof("MainController call %v.%v", serviceName, methodName)
 	args := make([]interface{}, 1)
 	args[0] = ctx
 	msg := fmt.Sprintf("call servicename:%v methodName:%v", serviceName, methodName)
@@ -129,7 +129,7 @@ func UploadController(ctx iris.Context) {
 
 		return
 	}
-	logger.Infof("UploadController call %v.%v", serviceName, methodName)
+	logger.Sugar.Infof("UploadController call %v.%v", serviceName, methodName)
 
 	err := ctx.Request().ParseMultipartForm(postMaxSize)
 	if err != nil {
@@ -151,7 +151,7 @@ func UploadController(ctx iris.Context) {
 	var files = make([]multipart.File, 0)
 	for _, heads := range form.File {
 		for _, head := range heads {
-			logger.Infof("file:%v", head.Filename)
+			logger.Sugar.Infof("file:%v", head.Filename)
 			file, err := head.Open()
 			if err != nil {
 				ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
@@ -201,7 +201,7 @@ func DownloadController(ctx iris.Context) {
 	methodName := params["methodName"]
 	destName := params["destName"]
 
-	logger.Infof("DownloadController call %v.%v", serviceName, methodName)
+	logger.Sugar.Infof("DownloadController call %v.%v", serviceName, methodName)
 	ctx.ContentType("")
 	ctx.ResponseWriter().Header().Set(context.ContentDispositionHeaderKey, "attachment;filename="+destName.(string))
 	args := make([]interface{}, 2)

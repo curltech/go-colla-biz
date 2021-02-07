@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43c22fde-ae05-4ee5-afc1-4b016269e7c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/logger/golog.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actual/cache.go" beforeDir="false" afterPath="$PROJECT_DIR$/actual/cache.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actual/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/actual/default.go" afterDir="false" />
@@ -22,8 +21,10 @@
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/service/menu.go" beforeDir="false" afterPath="$PROJECT_DIR$/gui/service/menu.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger/golog.go" beforeDir="false" afterPath="$PROJECT_DIR$/logger/golog.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rbac/controller/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/controller/jwt.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rbac/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/service/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruleengine/tengo/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/ruleengine/tengo/default.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ruleengine/test/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/ruleengine/test/default.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/spec/default.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/spec/upload.go" afterDir="false" />
@@ -32,6 +33,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
@@ -51,21 +59,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/p2p/dht" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ruleengine/tengo" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ruleengine/tengo" />
       <recent name="$PROJECT_DIR$/p2p/dht" />
       <recent name="$PROJECT_DIR$/p2p/chain" />
       <recent name="$PROJECT_DIR$/logger" />
       <recent name="$PROJECT_DIR$/cache/controller" />
-      <recent name="$PROJECT_DIR$/base/controller" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -75,7 +84,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="rule" />
+    <option name="LAST_COMMIT_MESSAGE" value="rule" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

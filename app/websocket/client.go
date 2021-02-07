@@ -44,7 +44,7 @@ func NewWsClient(schema string, ip string, port string, path string, timeout tim
 func (this *WsClient) dail() {
 	var err error
 	uri := url.URL{Scheme: this.schema, Host: *this.addr, Path: this.path}
-	logger.Infof("connecting to %s", uri.String())
+	logger.Sugar.Infof("connecting to %s", uri.String())
 
 	ctx, cancel := context.WithDeadline(context.Background(), time.Now().Add(this.timeout))
 	defer cancel()
@@ -57,7 +57,7 @@ func (this *WsClient) dail() {
 	}
 	client, err := websocket.Dial(ctx, dialer, uri.String(), clientEvents)
 	if err != nil {
-		logger.Errorf("%v", err)
+		logger.Sugar.Errorf("%v", err)
 
 		return
 	}
@@ -65,17 +65,17 @@ func (this *WsClient) dail() {
 
 	this.conn, err = client.Connect(ctx, "")
 	if err != nil {
-		logger.Errorf("%v", err)
+		logger.Sugar.Errorf("%v", err)
 
 		return
 	}
 	this.isAlive = true
-	logger.Infof("connecting to %s 链接成功！！！", uri.String())
+	logger.Sugar.Infof("connecting to %s 链接成功！！！", uri.String())
 }
 
 func (this *WsClient) Disconnect() {
 	if err := this.conn.Disconnect(nil); err != nil {
-		logger.Errorf("reply from server: %v", err)
+		logger.Sugar.Errorf("reply from server: %v", err)
 	}
 }
 
@@ -88,7 +88,7 @@ func (this *WsClient) Send(msg websocket.Message) {
 处理接收的消息
 */
 func (this *WsClient) OnClientNativeMessage(nsConn *websocket.NSConn, msg websocket.Message) error {
-	logger.Infof("Server got: %s from [%s]", msg.Body, nsConn.Conn.ID())
+	logger.Sugar.Infof("Server got: %s from [%s]", msg.Body, nsConn.Conn.ID())
 	nsConn.Conn.Write(msg)
 
 	return nil

@@ -329,6 +329,8 @@ github.com/curltech/go-colla-core v0.0.1 h1:+r+LDzwfoiiL99rAUmREiMDi67/MngHEjcQM
 github.com/curltech/go-colla-core v0.0.1/go.mod h1:TFUCpRQywoJ49ecXVrrpnOUgI2se/k9A6OnWh5rxphA=
 github.com/curltech/go-colla-core v0.0.2 h1:p8zDcv/5gHxLmmnwN08lxpsmxwiQCXfCZznzrKUFZ18=
 github.com/curltech/go-colla-core v0.0.2/go.mod h1:+KsWQAowx1z0LLxFVT+RZdFjQYcoc1Je17g0MQxhKZ0=
+github.com/curltech/go-colla-core v0.0.7 h1:XZ31xbsVHiXw31odJECWlPWExcWFdSbsSfymHwQd/ag=
+github.com/curltech/go-colla-core v0.0.7/go.mod h1:+KsWQAowx1z0LLxFVT+RZdFjQYcoc1Je17g0MQxhKZ0=
 github.com/curltech/go-colla-core/logger v0.0.18/go.mod h1:jRYl7dFYqP8aQj9VkwdBUXYZSfUktm+YYg1arJILfyw=
 github.com/curltech/go-colla-core/logger v0.1.5 h1:WbXu2rUc3yX/QB2mcNP5AjR64UlaaxkYrGMkO58T4Js=
 github.com/curltech/go-colla-core/logger v0.1.5/go.mod h1:jOSQ+C5fUqsNSwurB/oAHq1IFSb0KI3l6GMa7xB6dZA=

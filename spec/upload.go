@@ -14,7 +14,7 @@ import (
 func UploadExcel(filename string) error {
 	xlsx, err := excelize.OpenFile(filename)
 	if err != nil {
-		logger.Errorf("filename:%v can't open", filename)
+		logger.Sugar.Errorf("filename:%v can't open", filename)
 		return err
 	}
 

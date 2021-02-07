@@ -210,7 +210,7 @@ func (this *PositionPath) splitPath(path string) {
 			pos := xstrings.Slice(n, begin+1, end)
 			o, err := convert.ToObject(pos, "int")
 			if err != nil {
-				logger.Errorf("NumberFormatException")
+				logger.Sugar.Errorf("NumberFormatException")
 			}
 			position = o.(int)
 		} else if begin > -1 && end > begin {

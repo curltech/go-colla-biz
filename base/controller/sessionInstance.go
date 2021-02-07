@@ -64,10 +64,10 @@ func SessionController(ctx iris.Context) {
 		LastAccessTime: &now,
 	}
 	if session.IsNew() {
-		logger.Infof("new session:%v", sessionId)
+		logger.Sugar.Infof("new session:%v", sessionId)
 		sessionInstance.Status = entity2.EntityState_New
 	} else {
-		logger.Infof("exist session access:%v", sessionId)
+		logger.Sugar.Infof("exist session access:%v", sessionId)
 		sessionInstance.Status = entity2.EntityState_Modified
 	}
 	sessionInstanceService := service.GetSessionInstanceService()

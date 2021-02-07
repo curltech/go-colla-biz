@@ -45,14 +45,14 @@ func (this *BaseController) ReadJSON(ctx iris.Context) ([]interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	logger.Infof(string(json))
+	logger.Sugar.Infof(string(json))
 	rowsSlicePtr := make([]interface{}, 0)
 	entities, err := this.ParseJSON(json)
 	if err != nil { //解析有错，按照单个实体解析
-		logger.Errorf("ReadJSON entities exception:%v", err)
+		logger.Sugar.Errorf("ReadJSON entities exception:%v", err)
 		entity, err := this.BaseService.NewEntity(nil)
 		if err != nil {
-			logger.Errorf("NewEntity exception:%v", err)
+			logger.Sugar.Errorf("NewEntity exception:%v", err)
 
 			return nil, err
 		}
@@ -60,7 +60,7 @@ func (this *BaseController) ReadJSON(ctx iris.Context) ([]interface{}, error) {
 			pageParam := &PageParam{CondiBean: entity}
 			err = message.Unmarshal(json, pageParam)
 			if err != nil { //都不能解析，出错
-				logger.Errorf("ReadJSON pageParam exception:%v", err)
+				logger.Sugar.Errorf("ReadJSON pageParam exception:%v", err)
 			} else {
 				rowsSlicePtr = append(rowsSlicePtr, pageParam)
 			}
@@ -68,11 +68,11 @@ func (this *BaseController) ReadJSON(ctx iris.Context) ([]interface{}, error) {
 		if len(rowsSlicePtr) == 0 {
 			err = message.Unmarshal(json, entity)
 			if err != nil { //都不能解析，出错
-				logger.Errorf("ReadJSON entity exception:%v", err)
+				logger.Sugar.Errorf("ReadJSON entity exception:%v", err)
 				condiBean := make(map[string]interface{})
 				err = message.Unmarshal(json, &condiBean)
 				if err != nil { //都不能解析，出错
-					logger.Errorf("ReadJSON condiBean exception:%v", err)
+					logger.Sugar.Errorf("ReadJSON condiBean exception:%v", err)
 
 					return nil, err
 				} else {

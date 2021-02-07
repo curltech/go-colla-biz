@@ -16,7 +16,7 @@ func (this *Role) CanbeRemove(specId uint64) int {
 	if count > min {
 		return count - min
 	} else {
-		logger.Errorf("Min:%v,count:%v cannot remove SpecId:%v", min, count, specId)
+		logger.Sugar.Errorf("Min:%v,count:%v cannot remove SpecId:%v", min, count, specId)
 	}
 
 	return 0
@@ -61,7 +61,7 @@ func (this *Role) RemoveRole(role *Role) bool {
 			}
 		}
 	} else {
-		logger.Errorf("connection count less min parent:%v;%v removed role:%v;%v", this.Id, this.Kind, role.Id, role.Kind)
+		logger.Sugar.Errorf("connection count less min parent:%v;%v removed role:%v;%v", this.Id, this.Kind, role.Id, role.Kind)
 	}
 
 	return false

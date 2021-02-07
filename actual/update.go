@@ -24,7 +24,7 @@ func (this *Role) CanbeAdd(specId uint64) int {
 	if count < max {
 		return max - count
 	} else {
-		logger.Errorf("Max:%v,count:%v cannot add Speckind:%v", max, count, kind)
+		logger.Sugar.Errorf("Max:%v,count:%v cannot add Speckind:%v", max, count, kind)
 		return 0
 	}
 }
@@ -73,7 +73,7 @@ func (this *Role) UpdateProperty() error {
 			return nil
 		}
 		if gap < 0 {
-			logger.Errorf("OverAttributeSpec")
+			logger.Sugar.Errorf("OverAttributeSpec")
 
 			return errors.New("OverAttributeSpec")
 		}

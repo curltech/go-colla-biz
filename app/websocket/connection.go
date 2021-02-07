@@ -17,7 +17,7 @@ func GetWebsocketConnPool() *WebsocketConnPool {
 
 func (this *WebsocketConnPool) Connect(conn *websocket.Conn) {
 	if conn != nil {
-		logger.Infof("remote peer:%v", conn.ID())
+		logger.Sugar.Infof("remote peer:%v", conn.ID())
 		_, ok := this.pool[conn.ID()]
 		if !ok {
 			this.pool[conn.ID()] = conn

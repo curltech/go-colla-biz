@@ -25,7 +25,7 @@ func setCacheRole(role *Role) {
 	key := getKey(role.SchemaName, role.Id)
 	_, ok := MemCache.Get(key)
 	if ok {
-		logger.Errorf("MemCacheExist:%v", role.Id)
+		logger.Sugar.Errorf("MemCacheExist:%v", role.Id)
 	}
 	MemCache.SetDefault(key, role)
 }

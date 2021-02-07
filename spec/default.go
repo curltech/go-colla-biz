@@ -298,7 +298,7 @@ func (md *MetaDefinition) getRoleSpec(parent *RoleSpec, specId uint64, effective
 		for _, con := range cons {
 			subSpec := md.getRoleSpecEntity(con.SubSpecId, effectiveDate)
 			if subSpec == nil {
-				logger.Errorf("")
+				logger.Sugar.Errorf("")
 			} else {
 				key := fmt.Sprintf("%v:%v", roleSpec.SpecId, con.SubSpecId)
 				roleSpec.ConnectionSpecs[key] = con
@@ -321,7 +321,7 @@ func (md *MetaDefinition) getRoleSpec(parent *RoleSpec, specId uint64, effective
 		for _, con := range cons {
 			subSpec := md.getActionSpecEntity(con.SubSpecId, effectiveDate)
 			if subSpec == nil {
-				logger.Errorf("")
+				logger.Sugar.Errorf("")
 			} else {
 				key := fmt.Sprintf("%v:%v", roleSpec.SpecId, con.SubSpecId)
 				roleSpec.ConnectionSpecs[key] = con
@@ -353,7 +353,7 @@ func (md *MetaDefinition) getRoleSpec(parent *RoleSpec, specId uint64, effective
 		for _, con := range cons {
 			subSpec := md.GetAttributeSpecEntity(con.SubSpecId, effectiveDate)
 			if subSpec == nil {
-				logger.Errorf("")
+				logger.Sugar.Errorf("")
 			} else {
 				key := fmt.Sprintf("%v:%v", roleSpec.SpecId, con.SubSpecId)
 				roleSpec.ConnectionSpecs[key] = con
@@ -488,7 +488,7 @@ func cacheRoleSpec(roleSpecs []*entity.RoleSpec) {
 		key := fmt.Sprintf("RoleSpec:SpecId:%v", roleSpec.SpecId)
 		_, ok := MemCache.Get(key)
 		if ok {
-			logger.Errorf("RoleSpec specId:%v repeat", roleSpec.SpecId)
+			logger.Sugar.Errorf("RoleSpec specId:%v repeat", roleSpec.SpecId)
 		} else {
 			MemCache.SetDefault(key, roleSpec)
 		}
@@ -517,7 +517,7 @@ func cacheFixedRoleSpec(fixedRoleSpecs []*entity.FixedRoleSpec) {
 		key := fmt.Sprintf("FixedRoleSpec:SpecId:%v", fixedRoleSpec.SpecId)
 		_, ok := MemCache.Get(key)
 		if ok {
-			logger.Errorf("FixedRoleSpec specId:%v repeat", fixedRoleSpec.SpecId)
+			logger.Sugar.Errorf("FixedRoleSpec specId:%v repeat", fixedRoleSpec.SpecId)
 		} else {
 			MemCache.SetDefault(key, fixedRoleSpec)
 		}
@@ -533,7 +533,7 @@ func cacheFixedRoleSpec(fixedRoleSpecs []*entity.FixedRoleSpec) {
 					if err == nil && len(fieldnameMap) > 0 {
 						_, ok = MemCache.Get(key)
 						if ok {
-							logger.Errorf("FixedRoleSpec specId:%v repeat", fixedRoleSpec.SpecId)
+							logger.Sugar.Errorf("FixedRoleSpec specId:%v repeat", fixedRoleSpec.SpecId)
 						} else {
 							MemCache.SetDefault(key, fieldnameMap)
 						}
@@ -556,7 +556,7 @@ func cacheAttributeSpec(attributeSpecs []*entity.AttributeSpec) {
 		key := fmt.Sprintf("AttributeSpec:SpecId:%v", a.SpecId)
 		_, ok := MemCache.Get(key)
 		if ok {
-			logger.Errorf("AttributeSpec specId:%v:%v repeat", a.SpecId, a.Kind)
+			logger.Sugar.Errorf("AttributeSpec specId:%v:%v repeat", a.SpecId, a.Kind)
 		} else {
 			MemCache.SetDefault(key, a)
 		}
@@ -585,7 +585,7 @@ func cacheActionSpec(actionSpecs []*entity.ActionSpec) {
 		key := fmt.Sprintf("ActionSpec:SpecId:%v", a.SpecId)
 		_, ok := MemCache.Get(key)
 		if ok {
-			logger.Errorf("ActionSpec specId:%v repeat", a.SpecId)
+			logger.Sugar.Errorf("ActionSpec specId:%v repeat", a.SpecId)
 		} else {
 			MemCache.SetDefault(key, a)
 		}
@@ -677,5 +677,5 @@ func Load() {
 	}()
 	wg.Wait()
 
-	logger.Infof("MetaDefinition load completed!")
+	logger.Sugar.Infof("MetaDefinition load completed!")
 }

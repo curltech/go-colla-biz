@@ -88,7 +88,7 @@ func start() {
 		port = config.TlsParams.Port
 	}
 
-	logger.Infof("successfully start iris app %v in port %v using %v tls mode,enjoy it!", appname, port, tlsmode)
+	logger.Sugar.Infof("successfully start iris app %v in port %v using %v tls mode,enjoy it!", appname, port, tlsmode)
 
 	var irisAddr = ":" + port
 	if config.ServerParams.Addr != "" {

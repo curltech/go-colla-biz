@@ -142,7 +142,7 @@ func Load() {
 	}()
 	wg.Wait()
 
-	logger.Infof("BaseCode load completed!")
+	logger.Sugar.Infof("BaseCode load completed!")
 }
 
 func init() {
