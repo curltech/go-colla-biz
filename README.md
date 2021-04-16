@@ -1,4 +1,4 @@
-### A business application platform enables dynamic business modeling and configuration for building enterprise applications.
+### An enterprise application platform enables dynamic business modeling and configuration.
 
 # License
 Copyright 2020-2021 CURL TECH PTE. LTD.
