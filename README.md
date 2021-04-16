@@ -1,5 +1,5 @@
-# go-colla-biz
-business
+### A business application platform enables dynamic business modeling and configuration for building enterprise applications.
+
 # License
 Copyright 2020-2021 CURL TECH PTE. LTD.
 
