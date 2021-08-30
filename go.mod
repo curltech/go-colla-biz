@@ -21,7 +21,6 @@ require (
 	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/elastic/go-elasticsearch/v8 v8.0.0-20200929065430-35fd8bce1107 // indirect
 	github.com/elazarl/goproxy v0.0.0-20201021153353-00ad82a08272 // indirect
-	github.com/ethereum/go-ethereum v1.9.21 // indirect
 	github.com/facebookgo/ensure v0.0.0-20200202191622-63f1cf65ac4c // indirect
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20200203212716-c811ad88dec4 // indirect
