@@ -36,7 +36,7 @@ func Set(app *iris.Application) {
 	//Method:   POST
 	//Resource: http://localhost:8080/receive
 	app.Options("/receive", crs, controller2.Protected)
-	app.Post("/receive", crs, controller2.Protected, controller.ReceivePCController) // ReceiveController or ReceivePCController
+	//app.Post("/receive", crs, controller2.Protected, controller.ReceivePCController) // ReceiveController or ReceivePCController
 
 	// Method:   Post
 	// Resource: http://localhost:8080/user/add，调用UserController.Add

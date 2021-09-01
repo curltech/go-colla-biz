@@ -3,8 +3,6 @@ package websocket
 import (
 	"fmt"
 	"github.com/curltech/go-colla-core/config"
-	"log"
-
 	socketio "github.com/googollee/go-socket.io"
 	"github.com/kataras/iris/v12"
 )
@@ -13,10 +11,8 @@ import (
 整合socket.io和iris，也就是使用iris作为socket.io的服务器实现
 */
 func SetSocket(app *iris.Application) {
-	server, err := socketio.NewServer(nil)
-	if err != nil {
-		log.Fatal(err)
-	}
+	server := socketio.NewServer(nil)
+
 	server.OnConnect("/", func(s socketio.Conn) error {
 		s.SetContext("")
 		fmt.Println("connected:", s.ID())

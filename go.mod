@@ -1,6 +1,6 @@
 module github.com/curltech/go-colla-biz
 
-go 1.15
+go 1.17
 
 require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
@@ -36,9 +36,11 @@ require (
 	github.com/go-workflow/go-workflow v0.0.0-20200122043112-85255031ec8d
 	github.com/goinggo/mapstructure v0.0.0-20140717182941-194205d9b4a9 // indirect
 	github.com/golang-collections/collections v0.0.0-20130729185459-604e922904d3 // indirect
+	github.com/googollee/go-socket.io v1.6.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/huandu/xstrings v1.3.2
 	github.com/hyperjumptech/grule-rule-engine v1.6.2
+	github.com/iris-contrib/middleware/casbin v0.0.0-20210110101738-6d0a4d799b5d
 	github.com/iris-contrib/middleware/cors v0.0.0-20210110101738-6d0a4d799b5d
 	github.com/jinzhu/gorm v1.9.16 // indirect
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
