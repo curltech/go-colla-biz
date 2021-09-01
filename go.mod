@@ -13,7 +13,7 @@ require (
 	github.com/casbin/casbin/v2 v2.17.0
 	github.com/casbin/xorm-adapter v1.0.0 // indirect
 	github.com/cenkalti/backoff/v4 v4.0.2 // indirect
-	github.com/curltech/go-colla-core v0.1.5
+	github.com/curltech/go-colla-core v0.1.8
 	github.com/cznic/b v0.0.0-20181122101859-a26611c4d92d // indirect
 	github.com/cznic/mathutil v0.0.0-20181122101859-297441e03548 // indirect
 	github.com/cznic/strutil v0.0.0-20181122101858-275e90344537 // indirect
@@ -36,12 +36,16 @@ require (
 	github.com/go-workflow/go-workflow v0.0.0-20200122043112-85255031ec8d
 	github.com/goinggo/mapstructure v0.0.0-20140717182941-194205d9b4a9 // indirect
 	github.com/golang-collections/collections v0.0.0-20130729185459-604e922904d3 // indirect
+	github.com/gorilla/websocket v1.4.2
+	github.com/huandu/xstrings v1.3.2
 	github.com/hyperjumptech/grule-rule-engine v1.6.2
+	github.com/iris-contrib/middleware/cors v0.0.0-20210110101738-6d0a4d799b5d
+	github.com/jinzhu/gorm v1.9.16 // indirect
+	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
 	github.com/kataras/golog v0.1.7
 	github.com/kataras/iris/v12 v12.2.0-alpha2
 	github.com/kataras/jwt v0.1.2 // indirect
 	github.com/kataras/neffos v0.0.18
-	github.com/klauspost/compress v1.11.7 // indirect
 	github.com/lib/pq v1.8.0 // indirect
 	github.com/lucsky/cuid v1.0.2 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect

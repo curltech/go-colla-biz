@@ -1,17 +1,12 @@
 package controller
 
 import (
-	"curltech.io/camsi/camsi-node/p2p/chain/handler"
-	"curltech.io/camsi/camsi-node/p2p/chain/service"
-	"curltech.io/camsi/camsi-node/p2p/msg"
 	"errors"
 	"fmt"
 	"github.com/curltech/go-colla-core/config"
 	"github.com/curltech/go-colla-core/container"
-	"github.com/curltech/go-colla-core/crypto"
 	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/debug"
-	"github.com/curltech/go-colla-core/util/message"
 	"github.com/curltech/go-colla-core/util/reflect"
 	"github.com/go-playground/validator/v10"
 	"github.com/kataras/iris/v12"
@@ -59,59 +54,6 @@ func MainController(ctx iris.Context) {
 		panic("NoController")
 	}
 	reflect.Call(controller, methodName, args)
-}
-
-/**
-接收Receive的p2p chain协议请求，消息是ChainMessage的格式
-*/
-func ReceiveController(ctx iris.Context) {
-	chainMessage := &msg.ChainMessage{}
-	err := ctx.ReadJSON(chainMessage)
-	if err != nil {
-		ctx.JSON(err.Error())
-	} else {
-		chainMessage.LocalConnectAddress = ctx.RemoteAddr()
-		response, err := service.Receive(chainMessage)
-		handler.SetResponse(chainMessage, response)
-		if err != nil {
-			ctx.JSON(err.Error())
-		} else {
-			ctx.JSON(response)
-		}
-	}
-}
-
-////////////////////
-
-/**
-接收Receive的p2p chain协议请求，消息是PCChainMessage的格式
-*/
-func ReceivePCController(ctx iris.Context) {
-	chainMessage := &msg.PCChainMessage{}
-	err := ctx.ReadJSON(chainMessage)
-	if err != nil {
-		ctx.JSON(err.Error())
-	} else {
-		securityContext := &crypto.SecurityContext{}
-		err = message.TextUnmarshal(chainMessage.SecurityContextString, securityContext)
-		if err != nil {
-			ctx.JSON(err.Error())
-		} else {
-			chainMessage.SecurityContext = securityContext
-			response, err := service.ReceivePC(chainMessage)
-			if err != nil {
-				ctx.JSON(err.Error())
-			} else {
-				if response != nil {
-					chainMessage, err = handler.EncryptPC(response)
-					if err != nil {
-						ctx.JSON(err.Error())
-					}
-					ctx.JSON(chainMessage)
-				}
-			}
-		}
-	}
 }
 
 type UploadParam struct {
