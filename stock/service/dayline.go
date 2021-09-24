@@ -3,8 +3,11 @@ package service
 import (
 	"github.com/curltech/go-colla-biz/stock/entity"
 	"github.com/curltech/go-colla-core/container"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/service"
 	"github.com/curltech/go-colla-core/util/message"
+	"io/ioutil"
+	"strings"
 )
 
 /**
@@ -38,7 +41,7 @@ func (this *DayDataService) NewEntity(data []byte) (interface{}, error) {
 }
 
 func (this *DayDataService) NewEntities(data []byte) (interface{}, error) {
-	entities := make([]*entity.Share, 0)
+	entities := make([]*entity.DayData, 0)
 	if data == nil {
 		return &entities, nil
 	}
@@ -50,8 +53,29 @@ func (this *DayDataService) NewEntities(data []byte) (interface{}, error) {
 	return &entities, err
 }
 
-func (this *DayDataService) parse(dir string) error {
-
+/**
+读目录下的数据
+*/
+func (this *DayDataService) parse(dirname string) error {
+	files, err := ioutil.ReadDir(dirname)
+	if err != nil {
+		return err
+	}
+	for _, file := range files {
+		filename := file.Name()
+		hasSuffix := strings.HasSuffix(filename, ".day")
+		if hasSuffix {
+			//shareId := strings.TrimSuffix(filename, ".day")
+			content, err := ioutil.ReadFile(filename)
+			if err != nil {
+				return err
+			}
+			for i := 0; i < len(content); i = i + 32 {
+				dayDate := string(content[i])
+				logger.Sugar.Infof(dayDate)
+			}
+		}
+	}
 	return nil
 }
 
