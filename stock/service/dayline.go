@@ -1,6 +1,8 @@
 package service
 
 import (
+	"bytes"
+	"encoding/binary"
 	"github.com/curltech/go-colla-biz/stock/entity"
 	"github.com/curltech/go-colla-core/container"
 	"github.com/curltech/go-colla-core/logger"
@@ -56,7 +58,7 @@ func (this *DayDataService) NewEntities(data []byte) (interface{}, error) {
 /**
 读目录下的数据
 */
-func (this *DayDataService) parse(dirname string) error {
+func (this *DayDataService) ParsePath(dirname string) error {
 	files, err := ioutil.ReadDir(dirname)
 	if err != nil {
 		return err
@@ -65,18 +67,46 @@ func (this *DayDataService) parse(dirname string) error {
 		filename := file.Name()
 		hasSuffix := strings.HasSuffix(filename, ".day")
 		if hasSuffix {
-			//shareId := strings.TrimSuffix(filename, ".day")
-			content, err := ioutil.ReadFile(filename)
+			shareId := strings.TrimSuffix(filename, ".day")
+			logger.Sugar.Infof("shareId:", shareId)
+			content, err := ioutil.ReadFile(dirname + "/" + filename)
 			if err != nil {
 				return err
 			}
-			for i := 0; i < len(content); i = i + 32 {
-				dayDate := string(content[i])
-				logger.Sugar.Infof(dayDate)
-			}
+			this.ParseByte(shareId, content)
 		}
 	}
 	return nil
+}
+
+func (this *DayDataService) ParseByte(shareId string, content []byte) {
+	for i := 0; i < len(content); i = i + 32 {
+		dayData := entity.DayData{}
+		dayData.ShareId = shareId
+		dayData.DayDate = bytesToInt(content[i : i+4])
+		dayData.OpeningPrice = bytesToInt(content[i+4 : i+8])
+		dayData.CeilingPrice = bytesToInt(content[i+8 : i+12])
+		dayData.FloorPrice = bytesToInt(content[i+12 : i+16])
+		dayData.ClosingPrice = bytesToInt(content[i+16 : i+20])
+		dayData.TurnVolume = bytesToFloat(content[i+20 : i+24])
+		dayData.Volume = bytesToInt(content[i+24 : i+28])
+		logger.Sugar.Infof("DayData:%s", dayData)
+		this.Insert(dayData)
+	}
+}
+
+func bytesToInt(bys []byte) int32 {
+	bytebuff := bytes.NewBuffer(bys)
+	var data int32
+	binary.Read(bytebuff, binary.LittleEndian, &data)
+	return data
+}
+
+func bytesToFloat(bys []byte) float32 {
+	bytebuff := bytes.NewBuffer(bys)
+	var data float32
+	binary.Read(bytebuff, binary.LittleEndian, &data)
+	return data
 }
 
 func init() {

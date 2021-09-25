@@ -45,18 +45,37 @@ require (
 	github.com/CloudyKit/fastprinter v0.0.0-20200109182630-33d98a066a53 // indirect
 	github.com/CloudyKit/jet/v5 v5.1.1 // indirect
 	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible // indirect
+	github.com/RoaringBitmap/roaring v0.4.23 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20181106222321-ec9c9a553398 // indirect
 	github.com/allegro/bigcache v1.2.1 // indirect
 	github.com/andybalholm/brotli v1.0.1 // indirect
 	github.com/antlr/antlr4 v0.0.0-20200801005519-2ba38605b949 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/aymerick/raymond v2.0.3-0.20180322193309-b565731e1464+incompatible // indirect
+	github.com/blevesearch/bleve/v2 v2.0.1 // indirect
+	github.com/blevesearch/bleve_index_api v1.0.0 // indirect
+	github.com/blevesearch/go-porterstemmer v1.0.3 // indirect
+	github.com/blevesearch/mmap-go v1.0.2 // indirect
+	github.com/blevesearch/scorch_segment_api v1.0.0 // indirect
+	github.com/blevesearch/segment v0.9.0 // indirect
+	github.com/blevesearch/snowballstem v0.9.0 // indirect
+	github.com/blevesearch/upsidedown_store_api v1.0.1 // indirect
+	github.com/blevesearch/zapx/v11 v11.1.10 // indirect
+	github.com/blevesearch/zapx/v12 v12.1.10 // indirect
+	github.com/blevesearch/zapx/v13 v13.1.10 // indirect
+	github.com/blevesearch/zapx/v14 v14.1.10 // indirect
+	github.com/blevesearch/zapx/v15 v15.1.10 // indirect
 	github.com/bmatcuk/doublestar v1.3.2 // indirect
 	github.com/btcsuite/btcd v0.0.0-20171128150713-2e60448ffcc6 // indirect
+	github.com/cenkalti/backoff/v4 v4.0.2 // indirect
 	github.com/chris-ramon/douceur v0.2.0 // indirect
+	github.com/couchbase/vellum v1.0.2 // indirect
+	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/eknkc/amber v0.0.0-20171010120322-cdade1c07385 // indirect
+	github.com/elastic/go-elasticsearch/v8 v8.0.0-20200929065430-35fd8bce1107 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/ethereum/go-ethereum v1.9.21 // indirect
+	github.com/glycerine/go-unsnap-stream v0.0.0-20181221182339-f9677308dec2 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
 	github.com/go-sql-driver/mysql v1.5.0 // indirect
@@ -64,6 +83,7 @@ require (
 	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/gobwas/ws v1.0.4 // indirect
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
+	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/gomodule/redigo v1.8.4 // indirect
 	github.com/google/uuid v1.1.2 // indirect
@@ -82,6 +102,7 @@ require (
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.1 // indirect
+	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/kataras/blocks v0.0.4 // indirect
 	github.com/kataras/pio v0.0.10 // indirect
@@ -97,21 +118,30 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/mschoch/smat v0.2.0 // indirect
 	github.com/nats-io/nats-server/v2 v2.6.1 // indirect
 	github.com/nats-io/nats.go v1.12.3 // indirect
 	github.com/nats-io/nkeys v0.3.0 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
+	github.com/olivere/elastic/v7 v7.0.22 // indirect
+	github.com/philhofer/fwd v1.0.0 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/sirupsen/logrus v1.6.0 // indirect
 	github.com/src-d/gcfg v1.4.0 // indirect
+	github.com/steveyen/gtreap v0.1.0 // indirect
 	github.com/syndtr/goleveldb v1.0.1-0.20200815110645-5c35d600f0ca // indirect
 	github.com/tdewolff/parse/v2 v2.5.10 // indirect
+	github.com/tinylib/msgp v1.1.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
+	github.com/willf/bitset v1.1.10 // indirect
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
+	github.com/yanyiwu/gojieba v1.1.2 // indirect
 	github.com/yosssi/ace v0.0.5 // indirect
+	go.etcd.io/bbolt v1.3.5 // indirect
 	go.uber.org/atomic v1.6.0 // indirect
 	go.uber.org/multierr v1.5.0 // indirect
 	go.uber.org/zap v1.15.0 // indirect

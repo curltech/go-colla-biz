@@ -2,7 +2,6 @@ package entity
 
 import (
 	"github.com/curltech/go-colla-core/entity"
-	"time"
 )
 
 /**
@@ -20,15 +19,15 @@ import (
 */
 type DayData struct {
 	entity.BaseEntity `xorm:"extends"`
-	ShareId           string     `xorm:"varchar(255)" json:"shareId,omitempty"`
-	DayDate           *time.Time `xorm:"dayDate" json:"dayDate,omitempty"`
-	OpeningPrice      float64    `json:"OpeningPrice,omitempty"`
-	CeilingPrice      float64    `json:"CeilingPrice,omitempty"`
-	FloorPrice        float64    `json:"FloorPrice,omitempty"`
-	ClosingPrice      float64    `json:"ClosingPrice,omitempty"`
-	Volume            float64    `json:"Volume,omitempty"`
-	TurnVolume        float64    `json:"TurnVolume,omitempty"`
-	Previous          float64    `json:"Previous,omitempty"`
+	ShareId           string  `xorm:"varchar(255)" json:"shareId,omitempty"`
+	DayDate           int32   `json:"dayDate,omitempty"`
+	OpeningPrice      int32   `json:"OpeningPrice,omitempty"`
+	CeilingPrice      int32   `json:"CeilingPrice,omitempty"`
+	FloorPrice        int32   `json:"FloorPrice,omitempty"`
+	ClosingPrice      int32   `json:"ClosingPrice,omitempty"`
+	TurnVolume        float32 `json:"TurnVolume,omitempty"`
+	Volume            int32   `json:"Volume,omitempty"`
+	Previous          int32   `json:"Previous,omitempty"`
 }
 
 func (DayData) TableName() string {
