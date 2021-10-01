@@ -51,9 +51,14 @@ func MainController(ctx iris.Context) {
 	defer fn()
 	controller := container.GetController(serviceName)
 	if controller == nil {
-		panic("NoController")
+		ctx.StopWithJSON(iris.StatusInternalServerError, "NoController")
 	}
-	reflect.Call(controller, methodName, args)
+	result, err := reflect.Call(controller, methodName, args)
+	if err == nil {
+		ctx.JSON(result)
+	} else {
+		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
+	}
 }
 
 type UploadParam struct {
