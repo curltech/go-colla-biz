@@ -84,7 +84,7 @@ func CreateToken(user *entity.User) ([]byte, error) {
 }
 
 func Protected(ctx iris.Context) {
-	if config.AppParams.EnableJwt {
+	if !config.AppParams.EnableJwt {
 		ctx.Next()
 		return
 	}
