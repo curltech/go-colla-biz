@@ -62,6 +62,7 @@ func GenerateToken(ctx iris.Context, user *entity.User) []byte {
 	// signer.WithEncryption([]byte(claims.Password), nil)
 	token, err := CreateToken(user)
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 
 		return nil
@@ -94,6 +95,7 @@ func Protected(ctx iris.Context) {
 	//取得token
 	token, done := getToken(ctx, "token")
 	if !done {
+		logger.Sugar.Error("NoToken")
 		ctx.StopWithJSON(iris.StatusUnauthorized, "NoToken")
 
 		return
@@ -101,6 +103,7 @@ func Protected(ctx iris.Context) {
 	// 校验token的有效性，并获取用户名
 	userName, expiresAtString, timeLeft, err := VerifyToken([]byte(token), currentUser)
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusUnauthorized, err.Error())
 
 		return
@@ -111,6 +114,7 @@ func Protected(ctx iris.Context) {
 	svc := service.GetUserService()
 	user := svc.GetUser(userName)
 	if user == nil {
+		logger.Sugar.Error("NoCurrentUser")
 		ctx.StopWithJSON(iris.StatusUnauthorized, "NoCurrentUser")
 
 		return
@@ -125,6 +129,7 @@ func Protected(ctx iris.Context) {
 	*/
 	err = Check(ctx, user)
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusForbidden, err.Error())
 
 		return
@@ -152,12 +157,14 @@ func getToken(ctx iris.Context, key string) (string, bool) {
 			if key == "token" {
 				authorization := ctx.GetHeader("Authorization")
 				if authorization == "" {
+					logger.Sugar.Error("authorization NoToken")
 					ctx.StopWithJSON(iris.StatusUnauthorized, "NoToken")
 
 					return "", false
 				} else {
 					token = strings.TrimPrefix(authorization, "Bearer ")
 					if token == "" {
+						logger.Sugar.Error("Bearer NoToken")
 						ctx.StopWithJSON(iris.StatusUnauthorized, "NoToken")
 
 						return "", false
@@ -241,6 +248,7 @@ func RefreshToken(ctx iris.Context, user *entity.User) *jwt.TokenPair {
 		// You can read the whole body with ctx.GetBody/ReadBody too.
 		var tokenPair jwt.TokenPair
 		if err := ctx.ReadJSON(&tokenPair); err != nil {
+			logger.Sugar.Error(err.Error())
 			ctx.StopWithJSON(iris.StatusUnauthorized, err.Error())
 
 			return nil
@@ -263,7 +271,8 @@ func RefreshToken(ctx iris.Context, user *entity.User) *jwt.TokenPair {
 	*/
 	userName := verifiedToken.StandardClaims.Subject
 	if userName != user.UserName {
-		ctx.StopWithJSON(iris.StatusUnauthorized, err.Error())
+		logger.Sugar.Error(err.Error())
+		ctx.StopWithJSON(iris.StatusUnauthorized, "username is not match")
 
 		return nil
 	}

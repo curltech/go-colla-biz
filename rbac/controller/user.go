@@ -7,6 +7,7 @@ import (
 	"github.com/curltech/go-colla-core/cache"
 	"github.com/curltech/go-colla-core/config"
 	"github.com/curltech/go-colla-core/container"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/util/message"
 	"github.com/kataras/iris/v12"
 )
@@ -41,11 +42,13 @@ func (this *UserController) Regist(ctx iris.Context) {
 	user := &entity.User{}
 	err := ctx.ReadJSON(user)
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 	}
 	service := this.BaseService.(*service2.UserService)
 	user, err = service.Regist(user)
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 	} else {
 		ctx.JSON(user)
@@ -57,6 +60,7 @@ func (this *UserController) GetCurrentUser(ctx iris.Context) {
 	if user != nil {
 		ctx.JSON(user)
 	} else {
+		logger.Sugar.Error("NoUser")
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NoUser")
 	}
 }
@@ -116,6 +120,7 @@ func (this *UserController) Login(ctx iris.Context) {
 	service := this.BaseService.(*service2.UserService)
 	user, err := service.Login(params[config.RbacParams.Credential], params[config.RbacParams.Password])
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NoUser")
 	} else {
 		if config.AppParams.EnableSession && sessionId != "" {
@@ -129,6 +134,7 @@ func (this *UserController) Login(ctx iris.Context) {
 			result["user"] = user
 			ctx.JSON(result)
 		} else {
+			logger.Sugar.Error("NilToken")
 			ctx.StopWithJSON(iris.StatusInternalServerError, "NilToken")
 		}
 	}

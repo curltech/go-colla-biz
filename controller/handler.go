@@ -51,12 +51,14 @@ func MainController(ctx iris.Context) {
 	defer fn()
 	controller := container.GetController(serviceName)
 	if controller == nil {
+		logger.Sugar.Error("NoController:%s", serviceName)
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NoController")
 	}
 	result, err := reflect.Call(controller, methodName, args)
 	if err == nil {
 		ctx.JSON(result)
 	} else {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 	}
 }
@@ -72,6 +74,7 @@ func UploadController(ctx iris.Context) {
 	var serviceName = ctx.PostValue("serviceName")
 	var methodName = ctx.PostValue("methodName")
 	if serviceName == "" || methodName == "" {
+		logger.Sugar.Error("NoService:%s", serviceName)
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NoService")
 
 		return
@@ -80,17 +83,20 @@ func UploadController(ctx iris.Context) {
 
 	err := ctx.Request().ParseMultipartForm(postMaxSize)
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 
 		return
 	}
 	form := ctx.Request().MultipartForm
 	if form == nil {
+		logger.Sugar.Error("BlankForm")
 		ctx.StopWithJSON(iris.StatusInternalServerError, "BlankForm")
 
 		return
 	}
 	if form.File == nil {
+		logger.Sugar.Error("NilFormFile")
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NilFormFile")
 
 		return
@@ -101,6 +107,7 @@ func UploadController(ctx iris.Context) {
 			logger.Sugar.Infof("file:%v", head.Filename)
 			file, err := head.Open()
 			if err != nil {
+				logger.Sugar.Error(err.Error())
 				ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 
 				return
@@ -126,12 +133,14 @@ func UploadController(ctx iris.Context) {
 	defer fn()
 	svc := container.GetService(serviceName)
 	if svc == nil {
+		logger.Sugar.Errorf("NoService:%s", serviceName)
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NoService")
 
 		return
 	}
 	result, err := reflect.Call(svc, methodName, args)
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 
 		return
@@ -162,6 +171,7 @@ func DownloadController(ctx iris.Context) {
 	}
 	result, err := reflect.Call(svc, methodName.(string), args)
 	if err != nil {
+		logger.Sugar.Error(err.Error())
 		ctx.JSON(err.Error())
 	} else {
 		ctx.ResponseWriter().Write(result[0].([]byte))

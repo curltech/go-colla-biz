@@ -1,7 +1,6 @@
 package app
 
 import (
-	"crypto/tls"
 	"github.com/curltech/go-colla-biz/app/router"
 	"github.com/curltech/go-colla-biz/app/websocket"
 	base "github.com/curltech/go-colla-biz/base/controller"
@@ -104,11 +103,7 @@ func start() {
 		cert := config.TlsParams.Cert
 		key := config.TlsParams.Key
 		app.Run(
-			iris.TLS(irisAddr, cert, key, func(su *iris.Supervisor) {
-				su.Server.TLSConfig = &tls.Config{
-					/* your custom fields */
-				}
-			}),
+			iris.TLS(irisAddr, cert, key),
 		)
 	}
 }
