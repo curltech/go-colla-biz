@@ -124,35 +124,37 @@ func (this *UserController) Login(ctx iris.Context) {
 		logger.Sugar.Error(err.Error())
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NoUser")
 	} else {
+		result := make(map[string]interface{})
 		if config.AppParams.EnableSession && sessionId != "" {
 			key := this.getSessionCacheKey(sessionId)
 			MemCache.SetDefault(key, user.UserName)
 		}
-		token := GenerateToken(ctx, user)
-		if token != nil {
-			result := make(map[string]interface{})
-			result["token"] = string(token)
-			b, err := json.Marshal(user)
+		if config.AppParams.EnableJwt {
+			token := GenerateToken(ctx, user)
+			if token != nil {
+				result["token"] = string(token)
+			} else {
+				logger.Sugar.Error("NilToken")
+				ctx.StopWithJSON(iris.StatusInternalServerError, "NilToken")
+			}
+		}
+		b, err := json.Marshal(user)
+		if err == nil {
+			u := entity.User{}
+			err = json.Unmarshal(b, &u)
 			if err == nil {
-				u := entity.User{}
-				err = json.Unmarshal(b, u)
-				if err == nil {
-					u.Password = ""
-					u.PlainPassword = ""
-					u.ConfirmPassword = ""
-					result["user"] = u
-					ctx.JSON(result)
-				} else {
-					logger.Sugar.Error(err.Error())
-					ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
-				}
+				u.Password = ""
+				u.PlainPassword = ""
+				u.ConfirmPassword = ""
+				result["user"] = u
+				ctx.JSON(result)
 			} else {
 				logger.Sugar.Error(err.Error())
 				ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 			}
 		} else {
-			logger.Sugar.Error("NilToken")
-			ctx.StopWithJSON(iris.StatusInternalServerError, "NilToken")
+			logger.Sugar.Error(err.Error())
+			ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
 		}
 	}
 }
