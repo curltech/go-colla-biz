@@ -47,7 +47,9 @@ func newApp(name string) *iris.Application {
 		//会话控制器，每个请求都会经过会话控制器
 		app.Use(base.SessionController)
 	}
-	controller2.Set(app)
+	if config.RbacParams.EnableCasbin {
+		controller2.Set(app)
+	}
 	//app.Validator = validator.New()
 
 	app.Favicon("./static/ico/favicon.ico")

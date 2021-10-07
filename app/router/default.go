@@ -31,6 +31,7 @@ func Set(app *iris.Application) {
 	//app.Get("/metrics", iris.FromStd(p.ServeHTTP))
 
 	//注册页面处理控制器
+
 	app.Any("/{name:string suffix(.html)}", crs, controller2.Protected, controller.HTMLController)
 
 	//Method:   POST

@@ -6,7 +6,7 @@ require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/Joker/hpp v1.0.0 // indirect
 	github.com/casbin/casbin/v2 v2.17.0
-	github.com/curltech/go-colla-core v0.1.8
+	github.com/curltech/go-colla-core v0.1.11
 	github.com/d5/tengo/v2 v2.6.2
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/flosch/pongo2/v4 v4.0.2 // indirect

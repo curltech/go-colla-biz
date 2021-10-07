@@ -84,6 +84,10 @@ func CreateToken(user *entity.User) ([]byte, error) {
 }
 
 func Protected(ctx iris.Context) {
+	if config.AppParams.EnableJwt {
+		ctx.Next()
+		return
+	}
 	// 检查是否是豁免地址
 	_, ok := checkNone(ctx)
 	if ok {
