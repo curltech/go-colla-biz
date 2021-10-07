@@ -8,6 +8,7 @@ import (
 	"github.com/curltech/go-colla-core/config"
 	"github.com/curltech/go-colla-core/container"
 	"github.com/curltech/go-colla-core/logger"
+	"github.com/curltech/go-colla-core/util/json"
 	"github.com/curltech/go-colla-core/util/message"
 	"github.com/kataras/iris/v12"
 )
@@ -131,8 +132,24 @@ func (this *UserController) Login(ctx iris.Context) {
 		if token != nil {
 			result := make(map[string]interface{})
 			result["token"] = string(token)
-			result["user"] = user
-			ctx.JSON(result)
+			b, err := json.Marshal(user)
+			if err == nil {
+				u := entity.User{}
+				err = json.Unmarshal(b, u)
+				if err == nil {
+					u.Password = ""
+					u.PlainPassword = ""
+					u.ConfirmPassword = ""
+					result["user"] = u
+					ctx.JSON(result)
+				} else {
+					logger.Sugar.Error(err.Error())
+					ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
+				}
+			} else {
+				logger.Sugar.Error(err.Error())
+				ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
+			}
 		} else {
 			logger.Sugar.Error("NilToken")
 			ctx.StopWithJSON(iris.StatusInternalServerError, "NilToken")
