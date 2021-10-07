@@ -158,14 +158,12 @@ func getToken(ctx iris.Context, key string) (string, bool) {
 				authorization := ctx.GetHeader("Authorization")
 				if authorization == "" {
 					logger.Sugar.Error("authorization NoToken")
-					ctx.StopWithJSON(iris.StatusUnauthorized, "NoToken")
 
 					return "", false
 				} else {
 					token = strings.TrimPrefix(authorization, "Bearer ")
 					if token == "" {
 						logger.Sugar.Error("Bearer NoToken")
-						ctx.StopWithJSON(iris.StatusUnauthorized, "NoToken")
 
 						return "", false
 					}
