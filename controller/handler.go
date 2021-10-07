@@ -53,6 +53,8 @@ func MainController(ctx iris.Context) {
 	if controller == nil {
 		logger.Sugar.Error("NoController:%s", serviceName)
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NoController")
+
+		return
 	}
 	_, err := reflect.Call(controller, methodName, args)
 	if err != nil {
