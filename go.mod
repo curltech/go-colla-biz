@@ -5,8 +5,9 @@ go 1.17
 require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/Joker/hpp v1.0.0 // indirect
+	github.com/bilibili/gengine v1.5.7
 	github.com/casbin/casbin/v2 v2.17.0
-	github.com/curltech/go-colla-core v0.1.13
+	github.com/curltech/go-colla-core v0.1.14
 	github.com/d5/tengo/v2 v2.6.2
 	github.com/flosch/pongo2/v4 v4.0.2 // indirect
 	github.com/go-playground/validator/v10 v10.3.0
@@ -47,7 +48,6 @@ require (
 	github.com/antlr/antlr4 v0.0.0-20210105192202-5c2b686f95e1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/aymerick/raymond v2.0.3-0.20180322193309-b565731e1464+incompatible // indirect
-	github.com/bilibili/gengine v1.5.7 // indirect
 	github.com/blevesearch/bleve/v2 v2.0.1 // indirect
 	github.com/blevesearch/bleve_index_api v1.0.0 // indirect
 	github.com/blevesearch/go-porterstemmer v1.0.3 // indirect
@@ -81,9 +81,11 @@ require (
 	github.com/gobwas/ws v1.0.4 // indirect
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
 	github.com/goinggo/mapstructure v0.0.0-20140717182941-194205d9b4a9 // indirect
+	github.com/golang-collections/collections v0.0.0-20130729185459-604e922904d3 // indirect
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/gomodule/redigo v1.8.4 // indirect
+	github.com/google/martian v2.1.0+incompatible // indirect
 	github.com/google/uuid v1.1.2 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/iris-contrib/go.uuid v2.0.0+incompatible // indirect
@@ -139,7 +141,6 @@ require (
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/willf/bitset v1.1.10 // indirect
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
-	github.com/yanyiwu/gojieba v1.1.2 // indirect
 	github.com/yosssi/ace v0.0.5 // indirect
 	go.etcd.io/bbolt v1.3.5 // indirect
 	go.uber.org/atomic v1.6.0 // indirect
