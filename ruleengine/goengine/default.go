@@ -2,10 +2,9 @@ package goengine
 
 import (
 	"errors"
-	"gengine/base"
-	"gengine/builder"
-	"gengine/context"
-	"gengine/engine"
+	"github.com/bilibili/gengine/builder"
+	"github.com/bilibili/gengine/context"
+	"github.com/bilibili/gengine/engine"
 	"github.com/curltech/go-colla-biz/ruleengine"
 	"github.com/curltech/go-colla-biz/ruleengine/entity"
 	"github.com/curltech/go-colla-biz/ruleengine/service"
@@ -86,8 +85,7 @@ func load(packageName string, version string, dataCtx *context.DataContext) (*bu
 	//读取规则，多个规则可以回车符拼在一起
 	//初始化规则引擎
 	if rule != "" {
-		knowledgeContext := base.NewKnowledgeContext()
-		ruleBuilder := builder.NewRuleBuilder(knowledgeContext, dataCtx)
+		ruleBuilder := builder.NewRuleBuilder(dataCtx)
 		err := ruleBuilder.BuildRuleFromString(rule)
 		if err == nil {
 			setCacheRule(packageName, version, rule)

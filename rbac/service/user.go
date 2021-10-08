@@ -78,7 +78,7 @@ func (this *UserService) Regist(user *entity.User) (*entity.User, error) {
 	if old.UserName == "" || user.Password == "" {
 		return nil, errors.New("NoUserName")
 	}
-	ok := this.Get(old, false, "", "")
+	ok, _ := this.Get(old, false, "", "")
 	if ok {
 		return nil, errors.New("ExistUserName")
 	}
@@ -88,7 +88,7 @@ func (this *UserService) Regist(user *entity.User) (*entity.User, error) {
 	user.UserId = fmt.Sprintf("%v", id)
 	if user.PlainPassword == user.ConfirmPassword {
 		this.EncryptPassword(user)
-		affected := this.Insert(user)
+		affected, _ := this.Insert(user)
 		if affected <= 0 {
 			err = errors.New("ErrorInsert")
 		}
@@ -102,7 +102,7 @@ func (this *UserService) Regist(user *entity.User) (*entity.User, error) {
 func (this *UserService) UpdateStatus(userName string, status string) {
 	user := &entity.User{}
 	user.UserName = userName
-	ok := this.Get(user, false, "", "")
+	ok, _ := this.Get(user, false, "", "")
 	if ok {
 		this.Update(user, []string{"Status"}, "")
 	}
@@ -118,7 +118,7 @@ func (this *UserService) Auth(userName string, password string) (*entity.User, e
 	user.PlainPassword = password
 	user.Status = entity.UserStatus_Enabled
 	this.EncryptPassword(user)
-	ok := this.Get(user, false, "", "")
+	ok, _ := this.Get(user, false, "", "")
 	if !ok {
 		logger.Sugar.Errorf("%v auth fail!", userName)
 
@@ -152,7 +152,7 @@ func (this *UserService) GetUser(userName string) *entity.User {
 	user := &entity.User{}
 	user.UserName = userName
 	user.Status = entity.UserStatus_Enabled
-	ok = this.Get(user, false, "", "")
+	ok, _ = this.Get(user, false, "", "")
 	if ok {
 		return user
 	}

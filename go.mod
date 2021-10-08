@@ -6,14 +6,12 @@ require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/Joker/hpp v1.0.0 // indirect
 	github.com/casbin/casbin/v2 v2.17.0
-	github.com/curltech/go-colla-core v0.1.11
+	github.com/curltech/go-colla-core v0.1.13
 	github.com/d5/tengo/v2 v2.6.2
-	github.com/fatih/structs v1.1.0 // indirect
 	github.com/flosch/pongo2/v4 v4.0.2 // indirect
 	github.com/go-playground/validator/v10 v10.3.0
 	github.com/go-redis/redis v6.15.9+incompatible // indirect
 	github.com/go-workflow/go-workflow v0.0.0-20200122043112-85255031ec8d
-	github.com/goinggo/mapstructure v0.0.0-20140717182941-194205d9b4a9 // indirect
 	github.com/googollee/go-socket.io v1.6.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/huandu/xstrings v1.3.2
@@ -25,19 +23,16 @@ require (
 	github.com/kataras/iris/v12 v12.2.0-alpha2
 	github.com/kataras/jwt v0.1.2 // indirect
 	github.com/kataras/neffos v0.0.18
-	github.com/lib/pq v1.8.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826
 	github.com/mumushuiding/util v0.0.0-20201102083322-920f049820a2 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/robfig/cron v1.2.0 // indirect
-	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4 // indirect
 	github.com/tdewolff/minify/v2 v2.9.13 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.2.0 // indirect
 	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e
 	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324 // indirect
-	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 )
 
 require (
@@ -49,9 +44,10 @@ require (
 	github.com/Shopify/goreferrer v0.0.0-20181106222321-ec9c9a553398 // indirect
 	github.com/allegro/bigcache v1.2.1 // indirect
 	github.com/andybalholm/brotli v1.0.1 // indirect
-	github.com/antlr/antlr4 v0.0.0-20200801005519-2ba38605b949 // indirect
+	github.com/antlr/antlr4 v0.0.0-20210105192202-5c2b686f95e1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/aymerick/raymond v2.0.3-0.20180322193309-b565731e1464+incompatible // indirect
+	github.com/bilibili/gengine v1.5.7 // indirect
 	github.com/blevesearch/bleve/v2 v2.0.1 // indirect
 	github.com/blevesearch/bleve_index_api v1.0.0 // indirect
 	github.com/blevesearch/go-porterstemmer v1.0.3 // indirect
@@ -66,7 +62,7 @@ require (
 	github.com/blevesearch/zapx/v14 v14.1.10 // indirect
 	github.com/blevesearch/zapx/v15 v15.1.10 // indirect
 	github.com/bmatcuk/doublestar v1.3.2 // indirect
-	github.com/btcsuite/btcd v0.0.0-20171128150713-2e60448ffcc6 // indirect
+	github.com/btcsuite/btcd v0.20.1-beta // indirect
 	github.com/cenkalti/backoff/v4 v4.0.2 // indirect
 	github.com/chris-ramon/douceur v0.2.0 // indirect
 	github.com/couchbase/vellum v1.0.2 // indirect
@@ -75,6 +71,7 @@ require (
 	github.com/elastic/go-elasticsearch/v8 v8.0.0-20200929065430-35fd8bce1107 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/ethereum/go-ethereum v1.9.21 // indirect
+	github.com/fatih/structs v1.1.0 // indirect
 	github.com/glycerine/go-unsnap-stream v0.0.0-20181221182339-f9677308dec2 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
@@ -83,6 +80,7 @@ require (
 	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/gobwas/ws v1.0.4 // indirect
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
+	github.com/goinggo/mapstructure v0.0.0-20140717182941-194205d9b4a9 // indirect
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/gomodule/redigo v1.8.4 // indirect
@@ -112,6 +110,7 @@ require (
 	github.com/klauspost/compress v1.13.4 // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
 	github.com/leodido/go-urn v1.2.0 // indirect
+	github.com/lib/pq v1.8.0 // indirect
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
 	github.com/mediocregopher/radix/v3 v3.6.0 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.4 // indirect
@@ -127,6 +126,7 @@ require (
 	github.com/philhofer/fwd v1.0.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
+	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/sirupsen/logrus v1.6.0 // indirect
@@ -145,12 +145,13 @@ require (
 	go.uber.org/atomic v1.6.0 // indirect
 	go.uber.org/multierr v1.5.0 // indirect
 	go.uber.org/zap v1.15.0 // indirect
-	golang.org/x/net v0.0.0-20201110031124-69a78807bb2b // indirect
+	golang.org/x/net v0.0.0-20210226101413-39120d07d75e // indirect
 	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1 // indirect
-	golang.org/x/text v0.3.4 // indirect
+	golang.org/x/text v0.3.5 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/protobuf v1.25.0 // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/src-d/go-billy.v4 v4.3.2 // indirect
 	gopkg.in/src-d/go-git.v4 v4.13.1 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect

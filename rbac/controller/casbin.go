@@ -70,7 +70,7 @@ func Check(ctx iris.Context, currentUser *entity.User) error {
 		resource.Status = entity.UserStatus_Enabled
 		resource.Path = path
 		svc := service.GetResourceService()
-		exist := svc.Get(&resource, false, "", "")
+		exist, _ := svc.Get(&resource, false, "", "")
 		if exist == false {
 			return nil
 		}

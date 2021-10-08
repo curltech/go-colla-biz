@@ -81,7 +81,7 @@ func (db *XORMDatabase) SetLogger(logger *golog.Logger) {
 // if the return value is LifeTime{} then the session manager sets the life time based on the expiration duration lives in configuration.
 func (db *XORMDatabase) Acquire(sid string, expires time.Duration) sessions.LifeTime {
 	session := entity.Session{SessionId: sid}
-	found := db.sessionService.Get(&session, false, "", "")
+	found, _ := db.sessionService.Get(&session, false, "", "")
 	if found {
 		lifeTime := session.LifeTime
 		return sessions.LifeTime{
@@ -98,7 +98,7 @@ func (db *XORMDatabase) Acquire(sid string, expires time.Duration) sessions.Life
 // https://redis.io/commands/expire#refreshing-expires
 func (db *XORMDatabase) OnUpdateExpiration(sid string, newExpires time.Duration) error {
 	session := entity.Session{SessionId: sid}
-	found := db.sessionService.Get(&session, false, "", "")
+	found, _ := db.sessionService.Get(&session, false, "", "")
 	if found {
 		session.LifeTime = int64(newExpires.Seconds())
 		mds := make([]interface{}, 1)
@@ -122,7 +122,7 @@ func (db *XORMDatabase) Set(sid string, key string, value interface{}, ttl time.
 		SessionId: sid,
 		Key:       key,
 	}
-	found := db.sessionDataService.Get(&sessionData, false, "", "")
+	found, _ := db.sessionDataService.Get(&sessionData, false, "", "")
 	bs, err := sessions.DefaultTranscoder.Marshal(value)
 	if err == nil && val != "" {
 		val = string(bs)
@@ -150,7 +150,7 @@ func (db *XORMDatabase) Get(sid string, key string) (value interface{}) {
 		SessionId: sid,
 		Key:       key,
 	}
-	found := db.sessionDataService.Get(&sessionData, false, "", "")
+	found, _ := db.sessionDataService.Get(&sessionData, false, "", "")
 	if found {
 		return sessionData.Value
 	} else {
@@ -207,7 +207,7 @@ func (db *XORMDatabase) Delete(sid string, key string) (deleted bool) {
 	}
 	mds := make([]interface{}, 1)
 	mds[0] = sessionData
-	affected := db.sessionDataService.Delete(mds, "")
+	affected, _ := db.sessionDataService.Delete(mds, "")
 	if affected != 0 {
 		return true
 	} else {
@@ -222,7 +222,7 @@ func (db *XORMDatabase) Clear(sid string) error {
 	}
 	mds := make([]interface{}, 1)
 	mds[0] = sessionData
-	affected := db.sessionDataService.Delete(mds, "")
+	affected, _ := db.sessionDataService.Delete(mds, "")
 	if affected == 0 {
 		logger.Sugar.Errorf("NoDeleted")
 	}
@@ -241,7 +241,7 @@ func (db *XORMDatabase) Release(sid string) error {
 	}
 	mds := make([]interface{}, 1)
 	mds[0] = session
-	affected := db.sessionService.Delete(mds, "")
+	affected, _ := db.sessionService.Delete(mds, "")
 	if affected >= 0 {
 		db.logger.Debugf("Database.Release.Driver.Delete: %s: %v", sid, affected)
 	}

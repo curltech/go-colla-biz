@@ -96,7 +96,7 @@ func (this *BaseController) Get(ctx iris.Context) {
 	//cond := make(map[string]interface{},0)
 	orderby := ctx.URLParam("orderby")
 	condiBean, _ := this.ReadJSON(ctx)
-	result := this.BaseService.Get(condiBean[0], false, orderby, "")
+	result, _ := this.BaseService.Get(condiBean[0], false, orderby, "")
 	if result {
 		ctx.JSON(condiBean)
 	} else {
@@ -137,7 +137,7 @@ func (this *BaseController) Find(ctx iris.Context) {
 		condiBean = params
 	}
 	if pageParam != nil && count == 0 {
-		count = this.BaseService.Count(condiBean, "")
+		count, _ = this.BaseService.Count(condiBean, "")
 	}
 	if pageParam == nil || count > 0 {
 		err = this.BaseService.Find(data, condiBean, orderby, from, limit, "")
@@ -162,7 +162,7 @@ func (this *BaseController) Insert(ctx iris.Context) {
 
 		return
 	}
-	affected := this.BaseService.Insert(data...)
+	affected, _ := this.BaseService.Insert(data...)
 	if affected > 0 {
 		ctx.JSON(&data)
 	} else {
@@ -180,7 +180,7 @@ func (this *BaseController) Update(ctx iris.Context) {
 
 		return
 	}
-	affected := this.BaseService.Update(data, nil, "")
+	affected, _ := this.BaseService.Update(data, nil, "")
 	if affected > 0 {
 		ctx.JSON(data)
 	} else {
@@ -196,7 +196,7 @@ func (this *BaseController) Upsert(ctx iris.Context) {
 
 		return
 	}
-	affected := this.BaseService.Upsert(data...)
+	affected, _ := this.BaseService.Upsert(data...)
 	if affected > 0 {
 		ctx.JSON(data)
 	} else {
@@ -214,7 +214,7 @@ func (this *BaseController) Delete(ctx iris.Context) {
 
 		return
 	}
-	affected := this.BaseService.Delete(data, "")
+	affected, _ := this.BaseService.Delete(data, "")
 	if affected > 0 {
 		ctx.JSON(data)
 	} else {
@@ -230,7 +230,7 @@ func (this *BaseController) Save(ctx iris.Context) {
 
 		return
 	}
-	affected := this.BaseService.Save(data...)
+	affected, _ := this.BaseService.Save(data...)
 	if affected > 0 {
 		ctx.JSON(data)
 	} else {

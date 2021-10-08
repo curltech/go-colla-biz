@@ -205,7 +205,7 @@ func attibuteSpec(sheetname string, rows [][]string) {
 	roleSpec.Kind = sheetname
 	roleSpec.Status = baseentity.EntityStatus_Effective
 	roleSpecSvc := service.GetRoleSpecService()
-	ok := roleSpecSvc.Get(&roleSpec, false, "", "")
+	ok, _ := roleSpecSvc.Get(&roleSpec, false, "", "")
 	var parentSpecId uint64
 	if ok {
 		parentSpecId = roleSpec.SpecId

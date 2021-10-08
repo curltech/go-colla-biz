@@ -124,7 +124,8 @@ func deleteByParentId(session repository.DbSession, is []uint64, entity interfac
 		for i, id := range is {
 			params[i] = id
 		}
-		affected = affected + session.Delete(entity, conds, params...)
+		c, _ := session.Delete(entity, conds, params...)
+		affected = affected + c
 	}
 
 	return affected
@@ -139,7 +140,8 @@ func deleteById(session repository.DbSession, is []uint64, entity interface{}) i
 		for i, id := range is {
 			params[i] = id
 		}
-		affected = affected + session.Delete(entity, conds, params...)
+		c, _ := session.Delete(entity, conds, params...)
+		affected = affected + c
 	}
 
 	return affected
@@ -168,7 +170,8 @@ func (this *Role) deleteRole(session repository.DbSession) int64 {
 			for _, property := range properties {
 				ps[0] = property
 			}
-			affected = affected + session.Delete(ps, "")
+			c, _ := session.Delete(ps, "")
+			affected = affected + c
 		}
 	}
 	v, ok = this.findChildren(specentity.SpecType_Action, "", -1)
@@ -179,7 +182,8 @@ func (this *Role) deleteRole(session repository.DbSession) int64 {
 			for _, a := range actionResults {
 				as[0] = a
 			}
-			affected = affected + session.Delete(as, "")
+			c, _ := session.Delete(as, "")
+			affected = affected + c
 		}
 	}
 
@@ -187,7 +191,8 @@ func (this *Role) deleteRole(session repository.DbSession) int64 {
 	if this.FixedActual != nil {
 		var fixedActuals = make([]interface{}, 1)
 		fixedActuals[0] = this.FixedActual
-		affected = affected + session.Delete(fixedActuals, "")
+		c, _ := session.Delete(fixedActuals, "")
+		affected = affected + c
 	}
 
 	v, ok = this.findChildren(specentity.SpecType_Role, "", -1)
@@ -202,7 +207,8 @@ func (this *Role) deleteRole(session repository.DbSession) int64 {
 
 	var deleteRoles = make([]interface{}, 1)
 	deleteRoles[0] = &this.Role
-	affected = affected + session.Delete(deleteRoles, "")
+	c, _ := session.Delete(deleteRoles, "")
+	affected = affected + c
 
 	return affected
 }
