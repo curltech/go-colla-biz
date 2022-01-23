@@ -96,8 +96,7 @@ func (this *UserController) CurrentUser(ctx iris.Context) *entity.User {
 	return nil
 }
 
-func (this *UserController) Logout(ctx iris.Context) string {
-	var sessionId string
+func (this *UserController) Logout(ctx iris.Context) {
 	if config.AppParams.EnableSession {
 		key := this.getSessionCacheKey(ctx)
 		var user = this.CurrentUser(ctx)
@@ -109,12 +108,10 @@ func (this *UserController) Logout(ctx iris.Context) string {
 		}
 	}
 	ctx.Logout()
-
-	return sessionId
 }
 
 func (this *UserController) Login(ctx iris.Context) {
-	sessionId := this.Logout(ctx)
+	this.Logout(ctx)
 	params := make(map[string]string, 0)
 	err := ctx.ReadJSON(&params)
 	service := this.BaseService.(*service2.UserService)
@@ -124,7 +121,7 @@ func (this *UserController) Login(ctx iris.Context) {
 		ctx.StopWithJSON(iris.StatusInternalServerError, "NoUser")
 	} else {
 		result := make(map[string]interface{})
-		if config.AppParams.EnableSession && sessionId != "" {
+		if config.AppParams.EnableSession {
 			key := this.getSessionCacheKey(ctx)
 			MemCache.SetDefault(key, user.UserName)
 		}
