@@ -13,7 +13,7 @@ import (
 	"github.com/kataras/iris/v12"
 )
 
-var MemCache = cache.NewMemCache("sessionUser", 1, 10)
+var MemCache = cache.NewMemCache("sessionUser", 60, 10)
 
 /**
 控制层代码需要做数据转换，调用服务层的代码，由于数据转换的结构不一致，因此每个实体（外部rest方式访问）的控制层都需要写一遍
