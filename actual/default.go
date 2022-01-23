@@ -39,7 +39,7 @@ type Role struct {
 	mux           sync.Mutex `json:"-,omitempty"`
 }
 
-var MemCache = cache.NewMemCache("actual", 1, 10)
+var MemCache = cache.NewMemCache("actual", 60, 10)
 
 func (this *Role) PutRole(role *Role) error {
 	actualId := role.Id

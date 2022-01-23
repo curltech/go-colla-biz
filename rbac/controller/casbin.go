@@ -15,7 +15,7 @@ import (
 	"path/filepath"
 )
 
-var CasbinMemCache = cache.NewMemCache("casbin", 1, 10)
+var CasbinMemCache = cache.NewMemCache("casbin", 60, 10)
 
 var casbinMiddleware *cas.Casbin
 var enforcer *casbin.Enforcer

@@ -35,8 +35,11 @@ func (this *UserController) ParseJSON(json []byte) (interface{}, error) {
 	return &entities, err
 }
 
-func (this *UserController) getSessionCacheKey(key string) string {
-	return "session:" + key
+func (this *UserController) getSessionCacheKey(ctx iris.Context) string {
+	sess := controller.GetSession().Start(ctx)
+	sessionId := sess.ID()
+
+	return "session:" + sessionId
 }
 
 func (this *UserController) Regist(ctx iris.Context) {
@@ -68,9 +71,7 @@ func (this *UserController) GetCurrentUser(ctx iris.Context) {
 
 func (this *UserController) GetCurrentUserName(ctx iris.Context) string {
 	if config.AppParams.EnableSession {
-		sess := controller.GetSession().Start(ctx)
-		sessionId := sess.ID()
-		key := this.getSessionCacheKey(sessionId)
+		key := this.getSessionCacheKey(ctx)
 		var userName string
 		v, ok := MemCache.Get(key)
 		if ok {
@@ -98,9 +99,7 @@ func (this *UserController) CurrentUser(ctx iris.Context) *entity.User {
 func (this *UserController) Logout(ctx iris.Context) string {
 	var sessionId string
 	if config.AppParams.EnableSession {
-		sess := controller.GetSession().Start(ctx)
-		sessionId = sess.ID()
-		key := this.getSessionCacheKey(sessionId)
+		key := this.getSessionCacheKey(ctx)
 		var user = this.CurrentUser(ctx)
 		if user != nil {
 			service := this.BaseService.(*service2.UserService)
@@ -126,7 +125,7 @@ func (this *UserController) Login(ctx iris.Context) {
 	} else {
 		result := make(map[string]interface{})
 		if config.AppParams.EnableSession && sessionId != "" {
-			key := this.getSessionCacheKey(sessionId)
+			key := this.getSessionCacheKey(ctx)
 			MemCache.SetDefault(key, user.UserName)
 		}
 		if config.AppParams.EnableJwt {

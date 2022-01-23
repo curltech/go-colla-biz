@@ -177,7 +177,7 @@ func (this *RoleSpec) GetRoleSpecMap() map[uint64]*RoleSpec {
 }
 
 var metaDefinition = &MetaDefinition{}
-var MemCache = cache.NewMemCache("rbac", 1000, 1000)
+var MemCache = cache.NewMemCache("spec", 1000, 1000)
 
 func GetMetaDefinition() *MetaDefinition {
 	return metaDefinition

@@ -10,4 +10,4 @@ const (
 	ExecuteType_TenGo    = "TenGo"
 )
 
-var MemCache = cache.NewMemCache("ruleengine", 1, 10)
+var MemCache = cache.NewMemCache("ruleengine", 60, 10)

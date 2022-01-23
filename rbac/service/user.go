@@ -13,7 +13,7 @@ import (
 	"github.com/curltech/go-colla-core/util/message"
 )
 
-var MemCache = cache.NewMemCache("rbac", 1, 10)
+var MemCache = cache.NewMemCache("rbac", 60, 10)
 
 /**
 同步表结构，服务继承基本服务的方法
