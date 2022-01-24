@@ -37,18 +37,18 @@ func Set(app *iris.Application) {
 	//Method:   POST
 	//Resource: http://localhost:8080/receive
 	app.Options("/receive", crs, controller2.Protected)
-	//app.Post("/receive", crs, controller2.Protected, controller.ReceivePCController) // ReceiveController or ReceivePCController
+	//app.Any("/receive", crs, controller2.Protected, controller.ReceiveController) // ReceiveController or ReceivePCController
 
 	// Method:   Post
 	// Resource: http://localhost:8080/user/add，调用UserController.Add
 	app.Options("/{serviceName:string}/{methodName:string}", crs, controller2.Protected, controller.MainController)
-	app.Post("/{serviceName:string}/{methodName:string}", crs, controller2.Protected, controller.MainController)
+	app.Any("/{serviceName:string}/{methodName:string}", crs, controller2.Protected, controller.MainController)
 
 	app.Options("/upload", crs, controller2.Protected, controller.UploadController)
-	app.Post("/upload", crs, controller2.Protected, controller.UploadController)
+	app.Any("/upload", crs, controller2.Protected, controller.UploadController)
 
 	app.Options("/download", crs, controller2.Protected, controller.DownloadController)
-	app.Post("/download", crs, controller2.Protected, controller.DownloadController)
+	app.Any("/download", crs, controller2.Protected, controller.DownloadController)
 
 	app.Get("/", func(ctx iris.Context) {
 		ctx.View("index", controller.TemplateParams)
