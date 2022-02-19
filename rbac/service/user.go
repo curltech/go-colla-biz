@@ -7,7 +7,6 @@ import (
 	"github.com/curltech/go-colla-core/cache"
 	"github.com/curltech/go-colla-core/container"
 	"github.com/curltech/go-colla-core/crypto/std"
-	entity2 "github.com/curltech/go-colla-core/entity"
 	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/service"
 	"github.com/curltech/go-colla-core/util/message"
@@ -75,14 +74,14 @@ func (this *UserService) Regist(user *entity.User) (*entity.User, error) {
 	var err error
 	old := &entity.User{}
 	old.UserName = user.UserName
-	if old.UserName == "" || user.Password == "" {
-		return nil, errors.New("NoUserName")
+	if old.UserName == "" || user.PlainPassword == "" {
+		return nil, errors.New("NoUserNameOrPassword")
 	}
 	ok, _ := this.Get(old, false, "", "")
 	if ok {
 		return nil, errors.New("ExistUserName")
 	}
-	user.Status = entity2.EntityStatus_Draft
+	user.Status = entity.UserStatus_Enabled
 	id := this.GetSeq()
 	user.Id = id
 	user.UserId = fmt.Sprintf("%v", id)

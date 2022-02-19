@@ -53,8 +53,11 @@ func (this *UserController) Regist(ctx iris.Context) {
 	user, err = service.Regist(user)
 	if err != nil {
 		logger.Sugar.Error(err.Error())
-		ctx.StopWithJSON(iris.StatusInternalServerError, err.Error())
+		ctx.StopWithJSON(iris.StatusOK, err.Error())
 	} else {
+		user.Password = ""
+		user.PlainPassword = ""
+		user.ConfirmPassword = ""
 		ctx.JSON(user)
 	}
 }
@@ -118,7 +121,7 @@ func (this *UserController) Login(ctx iris.Context) {
 	user, err := service.Login(params[config.RbacParams.Credential], params[config.RbacParams.Password])
 	if err != nil {
 		logger.Sugar.Error(err.Error())
-		ctx.StopWithJSON(iris.StatusInternalServerError, "NoUser")
+		ctx.StopWithJSON(iris.StatusOK, "NoUser")
 	} else {
 		result := make(map[string]interface{})
 		if config.AppParams.EnableSession {
@@ -131,7 +134,7 @@ func (this *UserController) Login(ctx iris.Context) {
 				result["token"] = string(token)
 			} else {
 				logger.Sugar.Error("NilToken")
-				ctx.StopWithJSON(iris.StatusInternalServerError, "NilToken")
+				ctx.StopWithJSON(iris.StatusOK, "NilToken")
 			}
 		}
 		b, err := json.Marshal(user)
