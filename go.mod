@@ -7,7 +7,7 @@ require (
 	github.com/Joker/hpp v1.0.0 // indirect
 	github.com/bilibili/gengine v1.5.7
 	github.com/casbin/casbin/v2 v2.17.0
-	github.com/curltech/go-colla-core v0.1.14
+	github.com/curltech/go-colla-core v0.1.17
 	github.com/d5/tengo/v2 v2.6.2
 	github.com/flosch/pongo2/v4 v4.0.2 // indirect
 	github.com/go-playground/validator/v10 v10.3.0
