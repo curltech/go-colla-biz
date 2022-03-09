@@ -35,7 +35,7 @@ func init() {
 func HTMLController(ctx iris.Context) {
 	name := ctx.Params().GetString("name")
 	name = strings.ReplaceAll(name, ".html", "")
-	fn := debug.Trace("render view:" + name)
+	fn := debug.TraceDebug("render view:" + name)
 	defer fn()
 	ctx.View(name, TemplateParams)
 }
@@ -47,7 +47,7 @@ func MainController(ctx iris.Context) {
 	args := make([]interface{}, 1)
 	args[0] = ctx
 	msg := fmt.Sprintf("call servicename:%v methodName:%v", serviceName, methodName)
-	fn := debug.Trace(msg)
+	fn := debug.TraceDebug(msg)
 	defer fn()
 	controller := container.GetController(serviceName)
 	if controller == nil {
@@ -128,7 +128,7 @@ func UploadController(ctx iris.Context) {
 	args := make([]interface{}, 1)
 	args[0] = files
 	msg := fmt.Sprintf("call servicename:%v methodName:%v", serviceName, methodName)
-	fn := debug.Trace(msg)
+	fn := debug.TraceDebug(msg)
 	defer fn()
 	svc := container.GetService(serviceName)
 	if svc == nil {
@@ -162,7 +162,7 @@ func DownloadController(ctx iris.Context) {
 	args := make([]interface{}, 2)
 	args[0] = params["condiBean"]
 	msg := fmt.Sprintf("call servicename:%v methodName:%v", serviceName, methodName)
-	fn := debug.Trace(msg)
+	fn := debug.TraceDebug(msg)
 	defer fn()
 	svc := container.GetService(serviceName.(string))
 	if svc == nil {
