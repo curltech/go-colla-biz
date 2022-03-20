@@ -123,6 +123,8 @@ func (this *UserService) Auth(userName string, password string) (*entity.User, e
 
 		return nil, errors.New("AuthFail")
 	}
+	roles, _ := GetGroupService().FindRolesByUserId(user.UserId)
+	user.Roles = roles
 
 	return user, nil
 }
@@ -159,9 +161,22 @@ func (this *UserService) GetUser(userName string) *entity.User {
 	return nil
 }
 
+func (this *UserService) FindByRoleId(roleId string) ([]*entity.User, error) {
+	users := make([]*entity.User, 0)
+	condiBean := &entity.User{}
+	conds := "userId in (select u.userId from rbac_user u join rbac_group g on u.userId=g.userId where g.roleId=?)"
+	paras := make([]interface{}, 0)
+	paras = append(paras, roleId)
+	err := this.Find(&users, condiBean, "", 0, 0, conds, paras)
+	if err != nil {
+		logger.Sugar.Errorf("FindByRoleId error:%v", err.Error())
+		return nil, err
+	}
+	return users, nil
+}
+
 func init() {
 	service.GetSession().Sync(new(entity.User))
-
 	userService.OrmBaseService.GetSeqName = userService.GetSeqName
 	userService.OrmBaseService.FactNewEntity = userService.NewEntity
 	userService.OrmBaseService.FactNewEntities = userService.NewEntities

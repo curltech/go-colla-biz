@@ -50,6 +50,7 @@ type User struct {
 	IpAddress           string     `xorm:"varchar(255)" json:"ipAddress,omitempty"`
 	WechatId            string     `xorm:"varchar(255)" json:"wechatId,omitempty"`
 	Avatar              string     `xorm:"varchar(4096)" json:"avatar,omitempty"`
+	Roles               string     `xorm:"-" json:"roles,omitempty"`
 }
 
 func (User) TableName() string {

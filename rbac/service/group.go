@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/curltech/go-colla-biz/rbac/entity"
 	"github.com/curltech/go-colla-core/container"
+	"github.com/curltech/go-colla-core/logger"
 	"github.com/curltech/go-colla-core/service"
 	"github.com/curltech/go-colla-core/util/message"
 )
@@ -48,6 +49,26 @@ func (this *GroupService) NewEntities(data []byte) (interface{}, error) {
 	}
 
 	return &entities, err
+}
+
+func (this *GroupService) FindRolesByUserId(userId string) (string, error) {
+	groups := make([]*entity.Group, 0)
+	condiBean := &entity.Group{UserId: userId}
+	err := this.Find(&groups, condiBean, "", 0, 0, "", nil)
+	if err != nil {
+		logger.Sugar.Errorf("FindByUserId error:%v", err.Error())
+		return "", err
+	}
+	roles := ""
+	i := 0
+	for _, group := range groups {
+		if i > 0 {
+			roles += ","
+		}
+		roles += group.RoleId
+		i++
+	}
+	return roles, nil
 }
 
 func init() {
