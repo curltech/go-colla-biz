@@ -5,10 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43c22fde-ae05-4ee5-afc1-4b016269e7c5" name="Default Changelist" comment="upgrade">
+      <change beforePath="$PROJECT_DIR$/.idea/go-colla-biz.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual/controller/businessentity.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual/controller/role.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/default.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/default.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websocket/client.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websocket/connection.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websocket/server.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websocket/socket.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/controller/sessionInstance.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/basecode/controller/basecode.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/basecode/controller/codedetail.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/controller/default.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/default.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/handler.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/session.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/controller/menu.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/controller/casbin.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/controller/jwt.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/controller/user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruleengine/controller/default.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/controller/rolespec.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/ico/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/chat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/reload.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/client.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/default.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +66,6 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/libp2p/go-libp2p-kad-dht@v0.16.0/routing.go" root0="SKIP_INSPECTION" />
-    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/pion/ion-sfu@v1.11.1-0.20220316020741-68545cc25230/pkg/twcc/twcc.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/../go-colla-node/go.mod" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -71,7 +98,7 @@
     "configurable.GoLibrariesConfigurable.is.expanded": "true",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/go-workspace/turn-server",
+    "last_opened_file_path": "C:/go-workspace/go-colla-web",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,18 +113,18 @@
       <recent name="$PROJECT_DIR$/../go-colla-node/p2p/chain/handler/sender" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\go-workspace\go-colla-node\webrtc" />
+      <recent name="C:\go-workspace\go-colla-node\webrtc\peer\client" />
       <recent name="C:\go-workspace\go-colla-biz\stock\controller" />
       <recent name="C:\go-workspace\go-colla-biz\stock\service" />
       <recent name="$PROJECT_DIR$/ruleengine/tengo" />
-      <recent name="$PROJECT_DIR$/p2p/dht" />
-      <recent name="$PROJECT_DIR$/p2p/chain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\go-workspace\go-colla-node\webrtc" />
+      <recent name="C:\go-workspace\go-colla-node\webrtc\peer\client" />
+      <recent name="C:\go-workspace\go-colla-core\repository\search" />
       <recent name="C:\go-workspace\go-colla-node\p2p\chain\handler\receiver" />
       <recent name="C:\go-workspace\go-colla-node\libp2p\pipe\pool" />
-      <recent name="C:\go-workspace\go-colla-node\libp2p\pipe" />
-      <recent name="C:\go-workspace\go-colla-node\p2p\chain\handler\dispatch" />
-      <recent name="C:\go-workspace\go-colla-node\p2p\handler" />
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build main.go (1)">
