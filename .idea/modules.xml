@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../go-colla-biz-admin/.idea/go-colla-biz-admin.iml" filepath="$PROJECT_DIR$/../go-colla-biz-admin/.idea/go-colla-biz-admin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../go-colla-core/.idea/go-colla-core.iml" filepath="$PROJECT_DIR$/../go-colla-core/.idea/go-colla-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../go-colla-node/.idea/go-colla-node.iml" filepath="$PROJECT_DIR$/../go-colla-node/.idea/go-colla-node.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/go-colla-web.iml" filepath="$PROJECT_DIR$/.idea/go-colla-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/go-colla-biz.iml" filepath="$PROJECT_DIR$/.idea/go-colla-biz.iml" />
     </modules>
   </component>
 </project>
