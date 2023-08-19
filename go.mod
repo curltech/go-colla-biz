@@ -36,6 +36,7 @@ require (
 	github.com/davidlazar/go-crypto v0.0.0-20200604182044-b73af7476f6c // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.2.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
+	github.com/elastic/elastic-transport-go/v8 v8.3.0 // indirect
 	github.com/elastic/gosigar v0.14.2 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/ethereum/go-ethereum v1.10.21 // indirect
