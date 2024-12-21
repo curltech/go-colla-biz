@@ -7,7 +7,7 @@ require (
 	github.com/bilibili/gengine v1.5.7
 	github.com/casbin/casbin/v2 v2.102.0
 	github.com/curltech/go-colla-core v0.1.22
-	github.com/d5/tengo/v2 v2.6.2
+	github.com/d5/tengo/v2 v2.17.0
 	github.com/go-redis/redis v6.15.9+incompatible // indirect
 	github.com/go-workflow/go-workflow v0.0.0-20200122043112-85255031ec8d
 	github.com/huandu/xstrings v1.5.0
