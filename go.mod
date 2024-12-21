@@ -5,7 +5,7 @@ go 1.23
 require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/bilibili/gengine v1.5.7
-	github.com/casbin/casbin/v2 v2.51.1
+	github.com/casbin/casbin/v2 v2.102.0
 	github.com/curltech/go-colla-core v0.1.22
 	github.com/d5/tengo/v2 v2.6.2
 	github.com/go-redis/redis v6.15.9+incompatible // indirect
@@ -21,10 +21,11 @@ require (
 
 require (
 	github.com/BurntSushi/toml v1.4.0 // indirect
-	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible // indirect
 	github.com/allegro/bigcache v1.2.1 // indirect
 	github.com/bmatcuk/doublestar v1.3.4 // indirect
+	github.com/bmatcuk/doublestar/v4 v4.6.1 // indirect
 	github.com/btcsuite/btcd/btcec/v2 v2.3.4 // indirect
+	github.com/casbin/govaluate v1.2.0 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.3.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/ethereum/go-ethereum v1.10.21 // indirect
