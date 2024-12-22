@@ -6,7 +6,7 @@ require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/bilibili/gengine v1.5.7
 	github.com/casbin/casbin/v2 v2.102.0
-	github.com/curltech/go-colla-core v0.1.23
+	github.com/curltech/go-colla-core v0.1.24
 	github.com/d5/tengo/v2 v2.17.0
 	github.com/go-redis/redis v6.15.9+incompatible // indirect
 	github.com/go-workflow/go-workflow v0.0.0-20200122043112-85255031ec8d
@@ -30,13 +30,13 @@ require (
 	github.com/bmatcuk/doublestar/v4 v4.7.1 // indirect
 	github.com/casbin/govaluate v1.2.0 // indirect
 	github.com/cloudflare/circl v1.5.0 // indirect
-	github.com/cyphar/filepath-securejoin v0.2.5 // indirect
+	github.com/cyphar/filepath-securejoin v0.3.6 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.3.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/ethereum/go-ethereum v1.14.12 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
-	github.com/go-git/go-billy/v5 v5.5.0 // indirect
-	github.com/go-git/go-git/v5 v5.11.0 // indirect
+	github.com/go-git/go-billy/v5 v5.6.0 // indirect
+	github.com/go-git/go-git/v5 v5.12.0 // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/goccy/go-json v0.10.4 // indirect
 	github.com/goinggo/mapstructure v0.0.0-20140717182941-194205d9b4a9 // indirect
@@ -45,7 +45,7 @@ require (
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/snappy v0.0.5-0.20220116011046-fa5810519dcb // indirect
 	github.com/google/martian v2.1.0+incompatible // indirect
-	github.com/google/uuid v1.3.1 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/holiman/uint256 v1.3.2 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
@@ -63,9 +63,9 @@ require (
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pjbgf/sha1cd v0.3.0 // indirect
 	github.com/satori/go.uuid v1.2.0 // indirect
-	github.com/sergi/go-diff v1.2.0 // indirect
+	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
-	github.com/skeema/knownhosts v1.2.2 // indirect
+	github.com/skeema/knownhosts v1.3.0 // indirect
 	github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7 // indirect
 	github.com/tealeg/xlsx v1.0.5 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
