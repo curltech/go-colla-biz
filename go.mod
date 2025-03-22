@@ -6,7 +6,7 @@ require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/bilibili/gengine v1.5.7
 	github.com/casbin/casbin/v2 v2.104.0
-	github.com/curltech/go-colla-core v0.1.27
+	github.com/curltech/go-colla-core v0.1.28
 	github.com/d5/tengo/v2 v2.17.0
 	github.com/go-redis/redis v6.15.9+incompatible // indirect
 	github.com/go-workflow/go-workflow v0.0.0-20200122043112-85255031ec8d
